@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package aoi;
+option csharp_namespace = "Aoi";
+
+service AoiStreamer {
+  rpc StreamImages (stream ImageRequest) returns (stream ImageAck);
+}
+
+message ImageRequest {
+  string file_name = 1;
+  int32 idx = 2;
+  bytes image = 3;
+  int32 rows = 4;
+  int32 cols = 5;
+}
+
+message ImageAck {
+  int32 idx = 1;
+  string saved_as = 2;
+}
