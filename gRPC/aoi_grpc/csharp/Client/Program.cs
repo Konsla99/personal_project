@@ -1,15 +1,17 @@
 using System.IO.Compression;
 using Google.Protobuf;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Aoi;
 
 const string MnistFileName = "train-images-idx3-ubyte.gz";
-var dataPath = Path.Combine(AppContext.BaseDirectory, "data", "mnist", MnistFileName);
+var dataPath = FindMnistFilePath(MnistFileName);
 
-if (!File.Exists(dataPath))
+if (string.IsNullOrEmpty(dataPath))
 {
-    Console.WriteLine("MNIST 파일을 찾을 수 없습니다:");
-    Console.WriteLine(dataPath);
+    Console.WriteLine("MNIST 파일을 찾을 수 없습니다.");
+    Console.WriteLine("예상 위치:");
+    Console.WriteLine("  aoi_grpc\\csharp\\Client\\data\\mnist\\train-images-idx3-ubyte.gz");
     Console.WriteLine("USAGE.md를 참고해 데이터셋을 다운로드하세요.");
     return;
 }
@@ -73,6 +75,36 @@ while (true)
 
 await call.RequestStream.CompleteAsync();
 await responseTask;
+
+static string? FindMnistFilePath(string fileName)
+{
+    var baseDir = AppContext.BaseDirectory;
+    var direct = Path.Combine(baseDir, "data", "mnist", fileName);
+    if (File.Exists(direct))
+    {
+        return direct;
+    }
+
+    var current = new DirectoryInfo(baseDir);
+    for (var i = 0; i < 8 && current != null; i++)
+    {
+        var candidate = Path.Combine(
+            current.FullName,
+            "aoi_grpc",
+            "csharp",
+            "Client",
+            "data",
+            "mnist",
+            fileName);
+        if (File.Exists(candidate))
+        {
+            return candidate;
+        }
+        current = current.Parent;
+    }
+
+    return null;
+}
 
 static (List<byte[]> images, int rows, int cols) LoadMnistImages(string gzPath)
 {
