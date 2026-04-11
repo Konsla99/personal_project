@@ -215,6 +215,22 @@ template {
   display: none;
 }
 
+/* ======================================================= */
+/* 다크 테마 / 테크 블로그 베이스 색상 변수 (Dark Blue Palette) */
+/* ======================================================= */
+:root[data-theme="dark"] {
+  --bg-main: #0B1120; /* 다크 블루계열 배경 */
+  --bg-surface: #1E293B; /* 박스/사이드바 배경 */
+  --text-main: #E2E8F0; /* 기본 텍스트 (가독성 높은 밝은 회백색) */
+  --bg-main: #0B1221; /* 더 깊고 차가운 테크 네이비 베이스 */
+  --bg-surface: #172136; /* 사이드바/박스용 구분되는 블루 */
+  --text-main: #F1F5F9; /* 명도 대비를 극대화한 밝은 화이트 톤 */
+  --text-muted: #94A3B8; /* 부가 텍스트 */
+  --border-color: #334155; /* 테두리 라인 */
+  --border-color: #283A5E; /* 테두리 라인도 은은한 블루톤으로 */
+  --point-color: #38BDF8; /* 테크 느낌의 포인트 블루 */
+}
+
 /* common */
 article,
 aside,
@@ -232,10 +248,12 @@ summary {
 }
 
 body {
-  font-family: Pretendard-Regular, Arial, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", "Nanum Gothic", Dotum, '돋움', Helvetica, sans-serif;
+  font-family: "Pretendard", Arial, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-main);
 }
 
 .blind {
@@ -252,7 +270,7 @@ html, body {
   position: relative;
   height: 100%;
   -webkit-text-size-adjust: 100%;
-  color: #333;
+  color: var(--text-main);
 }
 
 html {
@@ -374,8 +392,8 @@ html {
     width: 381px;
     height: 100%;
     padding: 0 40px;
-    border-left: 1px solid #efefef;
-    background: #fff;
+  border-left: 1px solid var(--border-color);
+  background: var(--bg-surface);
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 20;
@@ -433,7 +451,7 @@ html {
 #tt-body-category:not(.wrap-drawer) .header,
 #tt-body-search:not(.wrap-drawer) .header,
 #tt-body-archive:not(.wrap-drawer) .header {
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--border-color);
 }
 
 
@@ -564,6 +582,7 @@ html {
   display: inline-block;
   font-size: 24px;
   color: #000;
+  color: var(--text-main);
 }
 
 .area-paging .link_page:hover {
@@ -588,6 +607,7 @@ html {
   text-align: center;
   letter-spacing: -0.3px;
   color: #333;
+  color: var(--text-main);
 }
 
 .area-paging .link_num:hover span {
@@ -697,7 +717,7 @@ html {
 .header {
   position: relative;
   width: 100%;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--border-color);
   z-index: 10;
   transition: top 0.2s ease-in-out;
 }
@@ -731,6 +751,7 @@ html {
   font-size: 18px;
   font-weight: 600;
   color: #333;
+  color: var(--text-main);
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -851,6 +872,7 @@ html {
   font-size: 16px;
   font-weight: 500;
   color: #333 !important;
+  color: var(--text-main) !important;
   text-decoration: none;
   white-space: nowrap;
   z-index: 2;
@@ -1469,6 +1491,7 @@ html {
   font-size: 13px;
   line-height: 1.69;
   color: #777;
+  color: var(--text-muted);
   text-decoration: none;
 }
 
@@ -1486,6 +1509,7 @@ html {
   font-weight: 500;
   line-height: normal;
   color: #333;
+  color: var(--text-main);
 }
 
 .area-aside .box-profile {
@@ -1509,6 +1533,7 @@ html {
   font-size: 14px;
   line-height: 1.54;
   color: #777;
+  color: var(--text-muted);
   word-wrap: break-word;
 }
 
@@ -1784,6 +1809,7 @@ html {
   font-size: 13px;
   line-height: 1.54;
   color: #333;
+  color: var(--text-main);
 }
 
 .area-aside .box-recent .list-recent .box-recent strong {
@@ -1910,6 +1936,7 @@ html {
   font-size: 24px;
   font-weight: 600;
   color: #333;
+  color: var(--text-main);
 }
 
 .area-aside .box-visit .item-visit {
@@ -2022,6 +2049,8 @@ html {
     padding: 0 24px;
     border-left: 1px solid #efefef;
     background: #fff;
+    border-left: 1px solid var(--border-color);
+    background: var(--bg-surface);
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 20;
@@ -2183,6 +2212,7 @@ html {
   line-height: 1.15;
   overflow: hidden;
   color: #333;
+  color: var(--text-main);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -2192,6 +2222,7 @@ html {
 .article-type-common .summary {
   margin: 0 0 12px 0;
   color: #777;
+  color: var(--text-muted);
 }
 
 .article-type-common .link-category {
@@ -2199,6 +2230,7 @@ html {
   font-size: 12px;
   line-height: 1.67;
   color: #333;
+  color: var(--point-color);
   text-decoration: none;
 }
 
@@ -3631,6 +3663,7 @@ html {
   font-size: 16px;
   line-height: 26px;
   color: #222;
+  color: var(--text-main);
 }
 
 .article-view h1,
@@ -3640,6 +3673,7 @@ html {
   margin-bottom: 24px;
   font-weight: 900;
   color: rgba(0, 0, 0, 0.87);
+  color: var(--text-main);
 }
 
 .article-view h1 {
@@ -3669,6 +3703,7 @@ html {
   font-size: 16px;
   line-height: 1.75;
   color: rgba(0, 0, 0, 0.54);
+  color: var(--text-muted);
 }
 
 .article-view ul,
@@ -3685,6 +3720,7 @@ html {
   font-size: 16px;
   line-height: 24px;
   color: rgba(0, 0, 0, 0.87);
+  color: var(--text-main);
   word-break: break-all;
 }
 
@@ -3697,6 +3733,7 @@ html {
   font-size: 16px;
   line-height: 1.75;
   color: rgba(0, 0, 0, 0.87);
+  color: var(--text-main);
   word-break: break-all;
 }
 
@@ -3831,6 +3868,7 @@ html {
   margin: 10px 0 0 0;
   padding-bottom: 14px;
   font-size: 14px;
+  color: var(--text-main);
 }
 
 .title-search span {
@@ -4587,7 +4625,7 @@ html {
   margin: 0;
   padding: 20px 20px 50px;
   word-wrap: break-word;
-  color: #333;
+  color: var(--text-main);
   min-height: 370px;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4635,6 +4673,7 @@ html {
   font-weight: normal;
   letter-spacing: -1px;
   color: #000;
+  color: var(--text-main);
   margin: 1em 0 20px;
 }
 
@@ -4664,15 +4703,15 @@ html {
 
 #article-view div[data-ke-type='moreLess'] {
   caret-color: auto;
-  background-color: #fafafa;
+  background-color: var(--bg-surface);
   padding: 20px 20px 22px;
   margin: 20px 0;
-  border: 1px dashed #dddddd;
-  color: #333333;
+  border: 1px dashed var(--border-color);
+  color: var(--text-main);
 }
 
 #article-view a {
-  color: #0070d1;
+  color: var(--point-color);
   text-decoration: underline;
 }
 
@@ -5330,8 +5369,9 @@ hr[data-ke-style='style8'],
 #article-view pre code.hljs {
   font-size: 14px;
   padding: 20px;
-  font-family: SF Mono, Menlo, Consolas, Monaco, monospace;
-  border: solid 1px #ebebeb;
+  font-family: 'JetBrains Mono', SF Mono, Menlo, Consolas, Monaco, monospace;
+  border: solid 1px var(--border-color);
+  background-color: #010409;
   line-height: 1.71;
   overflow: auto;
 }
@@ -5651,6 +5691,7 @@ hr[data-ke-style='style8'],
   font-size: 14px;
   word-break: break-word;
   margin: 0 0 10px 0;
+  color: var(--text-main);
 }
 
 .area-aside .box-profile .btn_tool + .profile-btn-group.member {
@@ -5701,4 +5742,3 @@ hr[data-ke-style='style8'],
 .cont-empty .group-btn {
   margin-top: 30px;
   }
-
