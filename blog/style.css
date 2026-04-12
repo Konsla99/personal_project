@@ -219,16 +219,161 @@ template {
 /* 다크 테마 / 테크 블로그 베이스 색상 변수 (Dark Blue Palette) */
 /* ======================================================= */
 :root[data-theme="dark"] {
-  --bg-main: #0B1120; /* 다크 블루계열 배경 */
-  --bg-surface: #1E293B; /* 박스/사이드바 배경 */
-  --text-main: #E2E8F0; /* 기본 텍스트 (가독성 높은 밝은 회백색) */
   --bg-main: #0B1221; /* 더 깊고 차가운 테크 네이비 베이스 */
   --bg-surface: #172136; /* 사이드바/박스용 구분되는 블루 */
   --text-main: #F1F5F9; /* 명도 대비를 극대화한 밝은 화이트 톤 */
   --text-muted: #94A3B8; /* 부가 텍스트 */
-  --border-color: #334155; /* 테두리 라인 */
   --border-color: #283A5E; /* 테두리 라인도 은은한 블루톤으로 */
   --point-color: #38BDF8; /* 테크 느낌의 포인트 블루 */
+}
+
+/* ======================================================= */
+/* Layout: design.html 기반 레이아웃 */
+/* ======================================================= */
+#wrap.layout-tech {
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+#wrap.layout-tech .header {
+  display: none;
+}
+
+#wrap.layout-tech .area-aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  padding: 40px 20px;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  z-index: 50;
+}
+
+#wrap.layout-tech #container,
+#wrap.layout-tech #footer {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+}
+
+#wrap.layout-tech .main {
+  padding: 60px;
+}
+
+#wrap.layout-tech .area-main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#wrap.layout-tech .main-header {
+  margin-bottom: 50px;
+}
+
+#wrap.layout-tech .main-header h1 {
+  margin: 0 0 12px;
+  font-size: 2.2rem;
+  color: var(--point-color);
+  letter-spacing: -0.02em;
+}
+
+#wrap.layout-tech .main-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#wrap.layout-tech .area-aside .box-profile {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  background: transparent;
+}
+
+#wrap.layout-tech .area-aside .box-profile .img-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid var(--point-color);
+  margin: 0 auto 14px;
+  display: block;
+}
+
+#wrap.layout-tech .area-aside .box-profile .tit-g {
+  padding: 0;
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+#wrap.layout-tech .area-aside .box-profile .text-profile {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+#wrap.layout-tech .box-category {
+  margin-top: 6px;
+}
+
+#wrap.layout-tech .box-category nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#wrap.layout-tech .box-category nav li {
+  margin-bottom: 10px;
+}
+
+#wrap.layout-tech .box-category nav a {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#wrap.layout-tech .box-category nav a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--point-color);
+}
+
+@media screen and (max-width: 1060px) {
+  #wrap.layout-tech .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #wrap.layout-tech .area-aside {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 24px 20px;
+    order: -1;
+  }
+
+  #wrap.layout-tech #container,
+  #wrap.layout-tech #footer {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #wrap.layout-tech .main {
+    padding: 28px 20px 60px;
+  }
+
+  #wrap.layout-tech .main-header h1 {
+    font-size: 1.8rem;
+  }
 }
 
 /* common */
@@ -581,7 +726,6 @@ html {
 .area-paging .link_page {
   display: inline-block;
   font-size: 24px;
-  color: #000;
   color: var(--text-main);
 }
 
@@ -606,7 +750,6 @@ html {
   line-height: 26px;
   text-align: center;
   letter-spacing: -0.3px;
-  color: #333;
   color: var(--text-main);
 }
 
@@ -715,10 +858,12 @@ html {
 
 /* header */
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
+  background-color: var(--bg-main);
   border-bottom: 1px solid var(--border-color);
-  z-index: 10;
+  z-index: 100;
   transition: top 0.2s ease-in-out;
 }
 
@@ -750,7 +895,6 @@ html {
   max-width: 220px;
   font-size: 18px;
   font-weight: 600;
-  color: #333;
   color: var(--text-main);
   text-decoration: none;
   text-overflow: ellipsis;
@@ -871,7 +1015,6 @@ html {
   display: block;
   font-size: 16px;
   font-weight: 500;
-  color: #333 !important;
   color: var(--text-main) !important;
   text-decoration: none;
   white-space: nowrap;
@@ -1490,7 +1633,6 @@ html {
   display: block;
   font-size: 13px;
   line-height: 1.69;
-  color: #777;
   color: var(--text-muted);
   text-decoration: none;
 }
@@ -1508,7 +1650,6 @@ html {
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
-  color: #333;
   color: var(--text-main);
 }
 
@@ -1532,7 +1673,6 @@ html {
   margin: 0 auto 33px auto;
   font-size: 14px;
   line-height: 1.54;
-  color: #777;
   color: var(--text-muted);
   word-wrap: break-word;
 }
@@ -1808,7 +1948,6 @@ html {
   margin-top: 2px;
   font-size: 13px;
   line-height: 1.54;
-  color: #333;
   color: var(--text-main);
 }
 
@@ -1935,7 +2074,6 @@ html {
   line-height: 1.64;
   font-size: 24px;
   font-weight: 600;
-  color: #333;
   color: var(--text-main);
 }
 
@@ -2047,8 +2185,6 @@ html {
     max-width: 380px;
     height: 100%;
     padding: 0 24px;
-    border-left: 1px solid #efefef;
-    background: #fff;
     border-left: 1px solid var(--border-color);
     background: var(--bg-surface);
     overflow-x: hidden;
@@ -2186,6 +2322,11 @@ html {
 /* article-type-common */
 .article-type-common {
   width: 100%;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.article-type-common:hover {
+  opacity: 0.75; /* 마우스 오버 시 테크 블로그 특유의 은은한 투명도 효과 */
 }
 
 .article-type-common .thumbnail {
@@ -2211,7 +2352,6 @@ html {
   font-weight: 500;
   line-height: 1.15;
   overflow: hidden;
-  color: #333;
   color: var(--text-main);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -2221,7 +2361,6 @@ html {
 
 .article-type-common .summary {
   margin: 0 0 12px 0;
-  color: #777;
   color: var(--text-muted);
 }
 
@@ -2229,7 +2368,6 @@ html {
   margin-right: 14px;
   font-size: 12px;
   line-height: 1.67;
-  color: #333;
   color: var(--point-color);
   text-decoration: none;
 }
@@ -3662,7 +3800,6 @@ html {
 .article-view p {
   font-size: 16px;
   line-height: 26px;
-  color: #222;
   color: var(--text-main);
 }
 
@@ -3672,7 +3809,6 @@ html {
 .article-view h4 {
   margin-bottom: 24px;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.87);
   color: var(--text-main);
 }
 
@@ -3702,7 +3838,6 @@ html {
   border-left: 1px solid;
   font-size: 16px;
   line-height: 1.75;
-  color: rgba(0, 0, 0, 0.54);
   color: var(--text-muted);
 }
 
@@ -3719,7 +3854,6 @@ html {
 .article-view ul li {
   font-size: 16px;
   line-height: 24px;
-  color: rgba(0, 0, 0, 0.87);
   color: var(--text-main);
   word-break: break-all;
 }
@@ -3732,7 +3866,6 @@ html {
   margin-bottom: 6px;
   font-size: 16px;
   line-height: 1.75;
-  color: rgba(0, 0, 0, 0.87);
   color: var(--text-main);
   word-break: break-all;
 }
@@ -4672,7 +4805,6 @@ html {
 #article-view h4 {
   font-weight: normal;
   letter-spacing: -1px;
-  color: #000;
   color: var(--text-main);
   margin: 1em 0 20px;
 }

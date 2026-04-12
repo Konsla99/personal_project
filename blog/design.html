@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Tech Lab | Semiconductor & SW</title>
+    <style>
+        /* 기본 변수 설정 (제공해주신 다크모드 기반) */
+        :root {
+            --bg-body: #0d1117;
+            --bg-sidebar: #161b22;
+            --bg-card: #21262d;
+            --accent-blue: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --border-color: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 1. 좌측 사이드바 (프로필 + 카테고리) */
+        aside {
+            width: 280px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-section {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #30363d;
+            margin: 0 auto 15px;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .profile-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .profile-bio {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .category-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-menu li {
+            margin-bottom: 10px;
+        }
+
+        .category-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .category-menu a:hover {
+            background-color: var(--bg-card);
+            color: var(--accent-blue);
+        }
+
+        /* 2. 메인 콘텐츠 영역 (홈페이지형) */
+        main {
+            margin-left: 280px;
+            flex: 1;
+            padding: 60px;
+        }
+
+        .main-header {
+            margin-bottom: 50px;
+        }
+
+        .main-header h1 {
+            font-size: 2.2rem;
+            color: var(--accent-blue);
+        }
+
+        /* 홈페이지형 3열 그리드 모듈 */
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.2s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .module-card .tag {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .module-card h3 {
+            margin: 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .module-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* 하단 푸터 */
+        footer {
+            margin-top: 100px;
+            padding: 30px 0;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<aside>
+    <div class="profile-section">
+        <div class="profile-img"></div>
+        <div class="profile-name">Konsla99</div>
+        <div class="profile-bio">Semiconductor & SW Engineer</div>
+    </div>
+    
+    <ul class="category-menu">
+        <li><a href="#">🏠 Home</a></li>
+        <li><a href="#">⚡ Semiconductor</a></li>
+        <li><a href="#">💻 Software Dev</a></li>
+        <li><a href="#">🤖 AI & Optimization</a></li>
+        <li><a href="#">📂 Portfolio</a></li>
+    </ul>
+</aside>
+
+<main>
+    <div class="main-header">
+        <h1>Tech Insight Lab</h1>
+        <p>반도체 설계부터 소프트웨어 최적화까지의 기록</p>
+    </div>
+
+    <div class="home-grid">
+        <div class="module-card">
+            <span class="tag">Recent Posts</span>
+            <h3>반도체 공정 및 소자</h3>
+            <p>HBM3 메모리 아키텍처와 최신 나노 공정 트렌드에 대한 분석 리포트입니다.</p>
+        </div>
+
+        <div class="module-card">
+            <span class="tag">Software Development</span>
+            <h3>C++ & 시스템 프로그래밍</h3>
+            <p>고성능 서버 및 임베디드 환경에서의 효율적인 시스템 설계 기법을 공유합니다.</p>
+        </div>
+
+        <div class="module-card">
+            <span class="tag">AI Optimization</span>
+            <h3>모델 경량화 및 가속</h3>
+            <p>TensorRT와 YOLO를 활용한 엣지 컴퓨팅 기반 AI 모델 최적화 연구 기록입니다.</p>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Minki Cha. Powered by Tistory.
+    </footer>
+</main>
+
+</body>
+</html>
