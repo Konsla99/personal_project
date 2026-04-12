@@ -7,12 +7,15 @@
 
 /* 기본 콜아웃 컨테이너 */
 #article-view .my-callout {
-    --callout-rgb: 13, 107, 185; /* 기본 색상 */
-    border: 1px solid rgba(var(--callout-rgb), 0.5) !important;
-    border-left: 5px solid rgb(var(--callout-rgb)) !important;
-    border-radius: 6px !important;
-    margin: 20px 0 !important;
-    background-color: rgba(var(--callout-rgb), 0.05) !important;
+    --callout-rgb: 56, 189, 248; /* 기본 색상: Info */
+    border: 1px solid rgba(var(--callout-rgb), 0.6) !important;
+    border-left: 6px solid rgb(var(--callout-rgb)) !important;
+    border-radius: 10px !important;
+    margin: 24px 0 !important;
+    background-color: rgba(var(--callout-rgb), 0.12) !important;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.35),
+      0 0 20px rgba(var(--callout-rgb), 0.18) !important;
     overflow: hidden !important;
 }
 
@@ -20,9 +23,11 @@
 #article-view .my-callout-title {
     display: flex !important;
     align-items: center !important;
-    padding: 10px 15px !important;
-    font-weight: bold !important;
+    padding: 12px 16px !important;
+    font-weight: 700 !important;
     color: rgb(var(--callout-rgb)) !important;
+    background-color: rgba(var(--callout-rgb), 0.12) !important;
+    border-bottom: 1px solid rgba(var(--callout-rgb), 0.25) !important;
     cursor: pointer !important;
     line-height: 1.5 !important;
 }
@@ -38,9 +43,10 @@
 /* 콜아웃 본문 (기본적으로 숨김) */
 #article-view .my-callout-content {
     display: none;
-    padding: 15px !important;
-    padding-top: 10px !important;
-    border-top: 1px solid rgba(var(--callout-rgb), 0.3) !important;
+    padding: 16px !important;
+    padding-top: 12px !important;
+    color: var(--text-main) !important;
+    border-top: 1px solid rgba(var(--callout-rgb), 0.25) !important;
 }
 
 /* 'open' 클래스가 추가되었을 때의 스타일 */
@@ -59,20 +65,26 @@
 }
 
 /* --- 유형별 색상 및 아이콘 정의 --- */
-#article-view .my-callout.info { --callout-rgb: 13, 107, 185 !important; }
+#article-view .my-callout.info { --callout-rgb: 56, 189, 248 !important; }
 #article-view .my-callout.info .my-callout-icon::before { content: '💡' !important; }
 
 #article-view .my-callout.abstract { --callout-rgb: 147, 112, 219 !important; }
 #article-view .my-callout.abstract .my-callout-icon::before { content: '📚' !important; }
 
-#article-view .my-callout.warning { --callout-rgb: 255, 165, 0 !important; }
+#article-view .my-callout.warning { --callout-rgb: 251, 146, 60 !important; }
 #article-view .my-callout.warning .my-callout-icon::before { content: '⚠️' !important; }
 
 #article-view .my-callout.example { --callout-rgb: 70, 130, 180 !important; }
 #article-view .my-callout.example .my-callout-icon::before { content: '✨' !important; }
 
-#article-view .my-callout.note { --callout-rgb: 51, 153, 102 !important; }
+#article-view .my-callout.note { --callout-rgb: 52, 211, 153 !important; }
 #article-view .my-callout.note .my-callout-icon::before { content: '📝' !important; }
+
+/* 리스트 마커 색상 통일 */
+#article-view .my-callout ul li::marker,
+#article-view .my-callout ol li::marker {
+    color: rgb(var(--callout-rgb)) !important;
+}
 
 
 /* ======================================================= */
@@ -229,90 +241,143 @@
               <p>[##_desc_##]</p>
             </div>
 
-            <!-- s_list / 카테고리, 검색 리스트 -->
-            <div class="area-common" >
-							<s_list>
-								<div class="category-banner-wrp display-none">
-									<div class="category-banner" <s_list_image>style="background-image:url('[##_list_image_##]')"</s_list_image>>
-										<div class="category-banner-inner">
-											<div class="category-description-box">
-												<strong class="category-description">[##_list_description_##]</strong>
-											</div>
-										</div>
-									</div>
-							</div>
-
-                <h2 class="title-search article-title-[##_list_style_##] title-border" list-style="[##_list_style_##]"><b class="archives">[##_list_conform_##]</b> <span>[##_list_count_##]</span></h2>
-									<s_list_rep>
-
-										<article class="article-type-common article-type-[##_list_style_##]">
-											<a href="[##_list_rep_link_##]" class="link-article"
-                        data-tiara-action-name="블로그글_클릭"
-                        data-tiara-action-kind="ClickContent"
-                        data-tiara-copy="[##_list_rep_title_text_##]"
-                        data-tiara-image="[##_list_rep_thumbnail_url_##]"
-                        data-tiara-click_url="[##_blog_link_##][##_list_rep_link_##]"
-                        data-tiara-name="[##_list_rep_title_text_##]"
-                        data-tiara-provider="[##_title_##]"
-                        data-tiara-plink="[##_list_rep_link_##]"
-                        data-tiara-id="[##_list_rep_link_##]"
-                      >
-                        <p class="thumbnail" <s_list_rep_thumbnail> has-thumbnail="1" style="background-image:url('[##_list_rep_thumbnail_raw_url_##]')" </s_list_rep_thumbnail>>
-                          <img src="[##_list_rep_thumbnail_raw_url_##]" class="img-thumbnail" role="presentation">
-                        </p>
-                      </a>
-
-									<div class="article-content">
-										<a href="[##_list_rep_link_##]" class="link-article"
-                      data-tiara-action-name="블로그글_클릭"
-                      data-tiara-action-kind="ClickContent"
-                      data-tiara-copy="[##_list_rep_title_text_##]"
-                      data-tiara-image="[##_list_rep_thumbnail_url_##]"
-                      data-tiara-click_url="[##_blog_link_##][##_list_rep_link_##]"
-                      data-tiara-name="[##_list_rep_title_text_##]"
-                      data-tiara-provider="[##_title_##]"
-                      data-tiara-plink="[##_list_rep_link_##]"
-                      data-tiara-id="[##_list_rep_link_##]"
-                    >
-											<strong class="title">[##_list_rep_title_##]</strong>
-											<p class="summary">[##_list_rep_summary_##]</p>
-										</a>
-										<div class="box-meta">
-											<a href="[##_list_rep_category_link_##]" class="link-category">[##_list_rep_category_##]</a>
-											<span class="date">[##_list_rep_regdate_##]</span>
-											<span class="reply">
-												<s_rp_count>[##_list_rep_rp_cnt_##]</s_rp_count>
-											</span>
-										</div>
-									</div>
-									</article>
-								</s_list_rep>
-
-                <s_list_empty>
-                  <div class="box-no-search type-search">
-                    <span>입력하신 단어의 철자가 정확한지 확인해 보세요.</span>
-                    <span>검색어의 단어 수를 줄이거나, 보다 일반적인 단어로 검색해 보세요.</span>
-                    <span>두 단어 이상의 키워드로 검색 하신 경우, 정확하게 띄어쓰기를 한 후 검색해 보세요.</span>
-                  </div>
-
-                  <div class="box-no-search type-tag">
-                    <span>선택하신 태그에 해당하는 글이 없습니다.</span>
-                    <span>다른 태그를 선택하시거나, 검색 기능을 활용해 보세요.</span>
-                  </div>
-
-                  <div class="box-no-search type-category">
-                    <span>선택하신 카테고리에 해당하는 글이 없습니다.</span>
-                    <span>다른 카테고리를 선택하시거나, 검색 기능을 활용해 보세요.</span>
-                  </div>
-
-                  <div class="box-no-search type-archive">
-                    <span>선택하신 기간에 등록된 글이 없습니다.</span>
-                  </div>
-
-                </s_list_empty>
-              </s_list>
+            <!-- Category 섹션 타이틀 추가 -->
+            <div class="menu-header">
+              <h2 class="menu-section-title">Category</h2>
             </div>
-            <!-- // s_list / 카테고리, 검색 리스트 -->
+
+            <!-- 카테고리 영역 감싸는 박스 추가 -->
+            <div class="category-area-wrapper">
+              <div class="category-grid">
+                <a class="category-card" href="[##_blog_link_##]">
+                  <div class="category-thumb thumb-latest"></div>
+                  <div class="category-body">
+                    <strong>최신글</strong>
+                    <p>최근 업데이트된 글 모음</p>
+                  </div>
+                </a>
+                <a class="category-card" href="[##_blog_link_##]category/AI%ED%88%B4">
+                  <div class="category-thumb thumb-ai"></div>
+                  <div class="category-body">
+                    <strong>AI툴</strong>
+                    <p>AI 도구와 워크플로 기록</p>
+                  </div>
+                </a>
+                <a class="category-card" href="[##_blog_link_##]category/Development">
+                  <div class="category-thumb thumb-dev"></div>
+                  <div class="category-body">
+                    <strong>Development</strong>
+                    <p>언어, 통신, 알고리즘</p>
+                  </div>
+                </a>
+                <a class="category-card" href="[##_blog_link_##]category/Devops%20%26%20Documentation">
+                  <div class="category-thumb thumb-devops"></div>
+                  <div class="category-body">
+                    <strong>Devops & Documentation</strong>
+                    <p>문서화, Git, 관리</p>
+                  </div>
+                </a>
+                <a class="category-card" href="[##_blog_link_##]category/SemiConductor">
+                  <div class="category-thumb thumb-semi"></div>
+                  <div class="category-body">
+                    <strong>SemiConductor</strong>
+                    <p>공정, 소자, 시스템</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- s_list / 카테고리, 검색 리스트 -->
+            <div class="area-common">
+              <div class="article-list-wrapper">
+                <s_list>
+                  <div class="category-banner-wrp display-none">
+                    <div class="category-banner" <s_list_image>style="background-image:url('[##_list_image_##]')"</s_list_image>>
+                      <div class="category-banner-inner">
+                        <div class="category-description-box">
+                          <strong class="category-description">[##_list_description_##]</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2 class="title-search article-title-[##_list_style_##] title-border" list-style="[##_list_style_##]">
+                    <b class="archives">[##_list_conform_##]</b> <span>[##_list_count_##]</span>
+                  </h2>
+                  
+                  <div class="box-article-list">
+                    <s_list_rep>
+                      <article class="article-type-common article-type-[##_list_style_##]">
+                        <a href="[##_list_rep_link_##]" class="link-article"
+                          data-tiara-action-name="블로그글_클릭"
+                          data-tiara-action-kind="ClickContent"
+                          data-tiara-copy="[##_list_rep_title_text_##]"
+                          data-tiara-image="[##_list_rep_thumbnail_url_##]"
+                          data-tiara-click_url="[##_blog_link_##][##_list_rep_link_##]"
+                          data-tiara-name="[##_list_rep_title_text_##]"
+                          data-tiara-provider="[##_title_##]"
+                          data-tiara-plink="[##_list_rep_link_##]"
+                          data-tiara-id="[##_list_rep_link_##]"
+                        >
+                          <p class="thumbnail" <s_list_rep_thumbnail> has-thumbnail="1" style="background-image:url('[##_list_rep_thumbnail_raw_url_##]')" </s_list_rep_thumbnail>>
+                            <img src="[##_list_rep_thumbnail_raw_url_##]" class="img-thumbnail" role="presentation">
+                          </p>
+                        </a>
+
+                        <div class="article-content">
+                          <a href="[##_list_rep_link_##]" class="link-article"
+                            data-tiara-action-name="블로그글_클릭"
+                            data-tiara-action-kind="ClickContent"
+                            data-tiara-copy="[##_list_rep_title_text_##]"
+                            data-tiara-image="[##_list_rep_thumbnail_url_##]"
+                            data-tiara-click_url="[##_blog_link_##][##_list_rep_link_##]"
+                            data-tiara-name="[##_list_rep_title_text_##]"
+                            data-tiara-provider="[##_title_##]"
+                            data-tiara-plink="[##_list_rep_link_##]"
+                            data-tiara-id="[##_list_rep_link_##]"
+                          >
+                            <strong class="title">[##_list_rep_title_##]</strong>
+                            <p class="summary">[##_list_rep_summary_##]</p>
+                          </a>
+                          <div class="box-meta">
+                            <a href="[##_list_rep_category_link_##]" class="link-category">[##_list_rep_category_##]</a>
+                            <span class="date">[##_list_rep_regdate_##]</span>
+                            <span class="reply">
+                              <s_rp_count>[##_list_rep_rp_cnt_##]</s_rp_count>
+                            </span>
+                          </div>
+                        </div>
+                      </article>
+                    </s_list_rep>
+                  </div>
+
+                  <!-- s_paging을 글 목록 박스 하단으로 이동 -->
+                  <s_paging>
+                    <div class="area-paging">
+                      <a [##_prev_page_##] class="link_page link_prev [##_no_more_prev_##]">
+                        <span class="xi-angle-left-min"><span class="screen_out">이전</span></span>
+                      </a>
+                      <div class="paging_num">
+                        <s_paging_rep>
+                          <a [##_paging_rep_link_##] class="link_num">[##_paging_rep_link_num_##]</a>
+                        </s_paging_rep>
+                      </div>
+                      <a [##_next_page_##] class="link_page link_next [##_no_more_next_##]">
+                        <span class="xi-angle-right-min"><span class="screen_out">다음</span></span>
+                      </a>
+                    </div>
+                  </s_paging>
+
+                  <s_list_empty>
+                    <div class="box-no-search type-search">
+                      <span>입력하신 단어의 철자가 정확한지 확인해 보세요.</span>
+                      <span>검색어의 단어 수를 줄이거나, 보다 일반적인 단어로 검색해 보세요.</span>
+                      <span>두 단어 이상의 키워드로 검색 하신 경우, 정확하게 띄어쓰기를 한 후 검색해 보세요.</span>
+                    </div>
+                  </s_list_empty>
+                </s_list>
+              </div>
+            </div>
 
             <!-- area-view / 뷰페이지 및 기본 영역 -->
             <div class="area-view">
@@ -579,39 +644,6 @@
                   </s_guest>
                 </div>
               </div>
-
-              <!-- s_paging -->
-              <s_paging>
-                <!-- area_paging -->
-                <div class="area-paging">
-                  <a [##_prev_page_##] class="link_page link_prev [##_no_more_prev_##]">
-                    <span class="xi-angle-left-min">
-                      <span class="screen_out">
-                        이전
-                      </span>
-                    </span>
-                  </a>
-                  <div class="paging_num">
-                    <s_paging_rep>
-                      <a [##_paging_rep_link_##] class="link_num">[##_paging_rep_link_num_##]</a>
-                    </s_paging_rep>
-                  </div>
-                  <a [##_next_page_##] class="link_page link_next [##_no_more_next_##]">
-                    <span class="xi-angle-right-min">
-                      <span class="screen_out">
-                        다음
-                      </span>
-                    </span>
-                  </a>
-                </div>
-                <!-- // area_paging -->
-                <!-- area-paging-more -->
-                <div class="area-paging-more">
-                    <a href="#page-more" class="paging-more">더보기</a>
-                </div>
-                <!-- // end area-paging-more -->
-              </s_paging>
-              <!-- // s_paging -->
 
             </div>
             <!-- area-view -->
@@ -1101,6 +1133,30 @@ if (typeof calloutScriptLoaded === 'undefined') {
         }
     });
 }
+
+// 전체글을 최신글로 변경하는 강력한 스크립트
+$(window).on('load', function() {
+    function fixArchivesTitle() {
+        $('.archives').each(function() {
+            var txt = $(this).text().trim();
+            if (txt === '전체글' || txt === '') {
+                $(this).text('최신글');
+            }
+        });
+    }
+    
+    fixArchivesTitle();
+    
+    // 티스토리가 동적으로 텍스트를 바꿀 경우를 대비해 관찰자 설정
+    var observer = new MutationObserver(function(mutations) {
+        fixArchivesTitle();
+    });
+    
+    var target = document.querySelector('.area-common');
+    if (target) {
+        observer.observe(target, { childList: true, subtree: true });
+    }
+});
 </script>
 </body>
 </html>
