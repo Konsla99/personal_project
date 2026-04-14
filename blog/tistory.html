@@ -141,6 +141,54 @@
 
       <!-- header -->
       <header class="header">
+        <style>
+          /* 사이드바 폰트 130% 및 UI 최적화 */
+          .area-aside {
+            font-size: 1.15rem !important; 
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+          }
+          .area-aside::-webkit-scrollbar { display: none !important; }
+          .box-category nav a {
+            font-size: 1.1rem !important; 
+            padding: 12px 15px !important;
+            transition: 0.2s;
+          }
+          .box-category nav .sub_category_list a {
+            font-size: 0.95rem !important;
+            padding: 6px 20px !important;
+          }
+          
+          /* 메인 그룹박스 및 그리드 스타일 */
+          .category-group-section {
+            margin-bottom: 60px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            background-color: rgba(255,255,255,0.015);
+            transition: transform 0.3s ease;
+          }
+          .category-group-section:hover {
+            border-color: var(--point-color);
+            background-color: rgba(255,255,255,0.03);
+          }
+          .category-group-title {
+            font-size: 1.4rem;
+            color: var(--point-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+          }
+          .category-group-title::before {
+            content: ""; width: 4px; height: 22px; background: var(--point-color); margin-right: 14px; border-radius: 2px;
+          }
+          .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+          }
+        </style>
 				<div class="line-bottom display-none"></div>
         <!-- inner-header -->
         <div class="inner-header <s_if_var_headersloguntitle>slogun-use</s_if_var_headersloguntitle> [##_var_topnav_##]">
@@ -241,47 +289,49 @@
               <p>[##_desc_##]</p>
             </div>
 
-            <!-- Category 섹션 타이틀 추가 -->
-            <div class="menu-header">
-              <h2 class="menu-section-title">Category</h2>
-            </div>
-
-            <!-- 카테고리 영역 감싸는 박스 추가 -->
+            <!-- 상위 6대 카테고리 3x2 그리드 -->
             <div class="category-area-wrapper">
               <div class="category-grid">
-                <a class="category-card" href="[##_blog_link_##]">
-                  <div class="category-thumb thumb-latest"></div>
-                  <div class="category-body">
-                    <strong>최신글</strong>
-                    <p>최근 업데이트된 글 모음</p>
-                  </div>
-                </a>
-                <a class="category-card" href="[##_blog_link_##]category/AI%ED%88%B4">
+                <a class="category-card" href="[##_blog_link_##]category/AI">
                   <div class="category-thumb thumb-ai"></div>
                   <div class="category-body">
-                    <strong>AI툴</strong>
-                    <p>AI 도구와 워크플로 기록</p>
+                    <strong>AI</strong>
+                    <p>프롬프트 엔지니어링, AI 서비스, Agent</p>
                   </div>
                 </a>
-                <a class="category-card" href="[##_blog_link_##]category/Development">
+                <a class="category-card" href="[##_blog_link_##]category/Engineering%20Principles">
+                  <div class="category-thumb thumb-principles"></div>
+                  <div class="category-body">
+                    <strong>Engineering Principles</strong>
+                    <p>설계방식, Convention, SW TEST</p>
+                  </div>
+                </a>
+                <a class="category-card" href="[##_blog_link_##]category/Computer%20Vision">
+                  <div class="category-thumb thumb-cv"></div>
+                  <div class="category-body">
+                    <strong>Computer Vision</strong>
+                    <p>캘리브레이션 및 영상 처리</p>
+                  </div>
+                </a>
+                <a class="category-card" href="[##_blog_link_##]category/Core%20Fundamentals%20(%EA%B8%B0%EB%B0%98%20%EA%B8%B0%EC%88%A0)">
                   <div class="category-thumb thumb-dev"></div>
                   <div class="category-body">
-                    <strong>Development</strong>
-                    <p>언어, 통신, 알고리즘</p>
+                    <strong>Core Fundamentals (기반 기술)</strong>
+                    <p>CMake, 언어, 통신, 알고리즘, 시스템</p>
                   </div>
                 </a>
-                <a class="category-card" href="[##_blog_link_##]category/Devops%20%26%20Documentation">
-                  <div class="category-thumb thumb-devops"></div>
+                <a class="category-card" href="[##_blog_link_##]category/TOOLS">
+                  <div class="category-thumb thumb-tools"></div>
                   <div class="category-body">
-                    <strong>Devops & Documentation</strong>
-                    <p>문서화, Git, 관리</p>
+                    <strong>TOOLS</strong>
+                    <p>마크다운, Git, Project Management</p>
                   </div>
                 </a>
                 <a class="category-card" href="[##_blog_link_##]category/SemiConductor">
                   <div class="category-thumb thumb-semi"></div>
                   <div class="category-body">
                     <strong>SemiConductor</strong>
-                    <p>공정, 소자, 시스템</p>
+                    <p>SEMI standard, 이론 및 공정</p>
                   </div>
                 </a>
               </div>
@@ -1155,6 +1205,12 @@ $(window).on('load', function() {
     var target = document.querySelector('.area-common');
     if (target) {
         observer.observe(target, { childList: true, subtree: true });
+    }
+});
+</script>
+</body>
+</html>
+ true });
     }
 });
 </script>

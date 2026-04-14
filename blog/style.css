@@ -250,19 +250,26 @@ template {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: 520px;
   height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 30px;
   background: var(--bg-surface);
   border-right: 1px solid var(--border-color);
   overflow-y: auto;
   z-index: 50;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  font-size: 1.3rem; /* 폰트 크기 130% */
+}
+
+#wrap.layout-tech .area-aside::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 #wrap.layout-tech #container,
 #wrap.layout-tech #footer {
-  margin-left: 260px;
-  width: calc(100% - 260px);
+  margin-left: 520px;
+  width: calc(100% - 520px);
 }
 
 #wrap.layout-tech .main {
