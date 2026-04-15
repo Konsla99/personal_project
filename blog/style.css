@@ -259,7 +259,7 @@ template {
   z-index: 50;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  font-size: 1.3rem; /* 폰트 크기 130% */
+  font-size: 2.3rem !important; /* 폰트 크기 2.3rem 고정 */
 }
 
 #wrap.layout-tech .area-aside::-webkit-scrollbar {
@@ -273,11 +273,12 @@ template {
 }
 
 #wrap.layout-tech .main {
-  padding: 60px 40px;
+  padding: 60px 20px; /* 패딩을 줄여 여백 최소화 */
+  max-width: none;
 }
 
 #wrap.layout-tech .area-main {
-  max-width: 1200px;
+  max-width: 1800px; /* 1400px에서 1800px로 대폭 확대 */
   margin: 0 auto;
 }
 
@@ -350,7 +351,7 @@ template {
   border-radius: 6px;
   color: var(--text-main);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.9rem; /* 폰트 크기 1.9rem (0.95rem의 2배) */
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -361,50 +362,69 @@ template {
 
 #wrap.layout-tech .category-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 20px;
   margin-bottom: 30px;
 }
 
 #wrap.layout-tech .category-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   text-decoration: none;
   color: var(--text-main);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+#wrap.layout-tech .category-card.expanded {
+  height: auto;
+  min-height: 250px;
 }
 
 #wrap.layout-tech .category-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 #wrap.layout-tech .category-thumb {
   height: 100px;
+  flex-shrink: 0;
   background: linear-gradient(135deg, rgba(83, 155, 245, 0.18), rgba(83, 155, 245, 0.05));
 }
 
 #wrap.layout-tech .category-body {
-  padding: 12px 14px;
+  height: 150px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 #wrap.layout-tech .category-body strong {
-  display: block;
-  font-size: 0.98rem;
-  margin-bottom: 6px;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--point-color);
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 
 #wrap.layout-tech .category-body p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: none;
+}
+
+#wrap.layout-tech .category-card .btn-expand i {
+  transition: transform 0.3s ease;
+}
+
+#wrap.layout-tech .category-card.expanded .btn-expand i {
+  transform: rotate(180deg);
 }
 
 #wrap.layout-tech .area-common {
@@ -457,8 +477,8 @@ template {
   gap: 20px;
 }
 
-#wrap.layout-tech .area-common article.article-type-common:nth-of-type(n+7),
-#wrap.layout-tech .box-article > article:nth-of-type(n+7) {
+#wrap.layout-tech .area-common article.article-type-common:nth-of-type(n+16),
+#wrap.layout-tech .box-article > article:nth-of-type(n+16) {
   display: none;
 }
 
@@ -1016,7 +1036,7 @@ html {
 .header .link_logo {
   display: block;
   max-width: 220px;
-  font-size: 18px;
+  font-size: 36px;
   font-weight: 600;
   color: var(--text-main);
   text-decoration: none;
@@ -1295,7 +1315,7 @@ html {
   }
 
   .header .link_logo {
-    font-size: 16px;
+    font-size: 36px;
   }
 
   .header .area-slogun {
@@ -6065,67 +6085,88 @@ hr[data-ke-style='style8'],
   margin-left: 20px;
 }
 
-/* 3. 카테고리 그리드 (3x2 형태) */
+/* 3. 카테고리 그리드 (1x6 형태 - 큼직하게) */
 #wrap.layout-tech .category-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important; /* 강제 3열 */
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important; /* 한 줄에 6개 고정 */
+  gap: 15px !important;
+  margin-bottom: 40px !important;
 }
 
 #wrap.layout-tech .category-card {
-  display: block !important; /* 가로 나열 방지 */
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--text-main);
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100% !important;
+  max-width: none !important;
+  height: 250px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
 }
 
-#wrap.layout-tech .category-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--point-color);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+#wrap.layout-tech .category-card.expanded {
+  height: auto !important;
+  min-height: 250px !important;
 }
 
 #wrap.layout-tech .category-thumb {
-  height: 100px;
-  background: linear-gradient(135deg, rgba(83, 155, 245, 0.18), rgba(83, 155, 245, 0.05));
+  height: 100px !important;
+  flex-shrink: 0 !important;
 }
 
 #wrap.layout-tech .category-body {
-  padding: 16px;
+  height: 150px !important;
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
 
 #wrap.layout-tech .category-body strong {
-  display: block;
-  font-size: 1.05rem;
-  margin-bottom: 6px;
-  color: var(--point-color);
+  display: block !important;
+  font-size: 24px !important;
+  margin-bottom: 8px !important;
+  color: var(--point-color) !important;
 }
 
 #wrap.layout-tech .category-body p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  margin: 0 !important;
+  color: var(--text-muted) !important;
+  font-size: 1.1rem !important;
 }
 
-/* 모바일 대응 */
-@media screen and (max-width: 1060px) {
-  #wrap.layout-tech .category-area-wrapper,
-  #wrap.layout-tech .article-list-wrapper {
-    padding: 15px;
-  }
-  #wrap.layout-tech .category-grid,
-  #wrap.layout-tech .article-list-wrapper .box-article-list {
-    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-  }
+#wrap.layout-tech .article-list-wrapper .box-article-list {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important; /* 한 줄에 5개 고정 */
+  gap: 20px !important;
 }
+
+#wrap.layout-tech .article-list-wrapper .box-article-list article {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 펼치기 버튼 디자인 강화 */
+.btn-expand {
+  position: absolute !important;
+  right: 8px !important;
+  bottom: 8px !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-color: var(--point-color) !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 20 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+}
+.btn-expand:hover {
+  background-color: #ffffff !important;
+  color: var(--point-color) !important;
+  transform: scale(1.1) !important;
+}
+
 
 /* 상세 페이지(글 읽기)에서 카테고리 메뉴 및 리스트 박스 숨기기 */
 #tt-body-page .menu-header,
