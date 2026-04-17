@@ -193,6 +193,31 @@
             height: 137.5px !important;
           }
 
+          .thumb-new {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .thumb-new::before {
+            content: "\ea3e"; 
+            font-family: 'xeicon';
+            font-size: 3rem;
+            color: #fff;
+          }
+          .thumb-playground {
+            background: linear-gradient(135deg, #00b894, #55efc4) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .thumb-playground::before {
+            content: "\e960";
+            font-family: 'xeicon';
+            font-size: 3rem;
+            color: #fff;
+          }
+
           .category-body {
             height: 112.5px !important;
             padding: 25px 60px 15px 15px !important;
@@ -438,6 +463,22 @@
             <div class="category-area-wrapper">
               <div class="category-grid">
 
+            <!-- All Posts -->
+            <div class="category-card">
+              <a class="card-link" href="[##_blog_link_##]category">
+                <div class="category-thumb thumb-new"></div>
+                <div class="category-body">
+                  <strong>전체 글</strong>
+                </div>
+              </a>
+              <span class="index-label">Index</span>
+              <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                <i class="xi-angle-down"></i>
+              </button>
+              <ul class="sub-category-list">
+              </ul>
+            </div>
+
                 <!-- AI -->
                 <div class="category-card">
                   <a class="card-link" href="[##_blog_link_##]category/AI">
@@ -550,6 +591,24 @@
                     <li><a href="[##_blog_link_##]category/SemiConductor/이론">이론</a></li>
                   </ul>
                 </div>
+
+                <!-- PLAYGROUND -->
+                <div class="category-card">
+                  <a class="card-link" href="[##_blog_link_##]category/PLAYGROUND">
+                    <div class="category-thumb thumb-playground"></div>
+                    <div class="category-body">
+                      <strong>PLAYGROUND</strong>
+                    </div>
+                  </a>
+                  <span class="index-label">Index</span>
+                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                    <i class="xi-angle-down"></i>
+                  </button>
+                  <ul class="sub-category-list">
+                    <!-- 하위 카테고리 필요 시 추가 -->
+                  </ul>
+                </div>
+
               </div>
             </div>
 

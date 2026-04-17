@@ -6310,3 +6310,9 @@ hr[data-ke-style='style8'],
 }
 
 
+
+/* Post Page Styles: Hide Header and Menu Titles */
+#tt-body-page .main-header,
+#tt-body-page .menu-section-title {
+  display: none !important;
+}
