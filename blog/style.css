@@ -392,10 +392,35 @@ template {
 }
 
 #wrap.layout-tech .category-thumb {
-  height: 137.5px;
+  height: 137.5px !important;
   flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(83, 155, 245, 0.18), rgba(83, 155, 245, 0.05));
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
+
+/* 모든 카테고리 썸네일 내부 아이콘 완전 제거 */
+#wrap.layout-tech .category-thumb::before,
+#wrap.layout-tech .category-thumb::after,
+#wrap.layout-tech .thumb-new::before, #wrap.layout-tech .thumb-new::after,
+#wrap.layout-tech .thumb-ai::before, #wrap.layout-tech .thumb-ai::after,
+#wrap.layout-tech .thumb-principles::before, #wrap.layout-tech .thumb-principles::after,
+#wrap.layout-tech .thumb-cv::before, #wrap.layout-tech .thumb-cv::after,
+#wrap.layout-tech .thumb-dev::before, #wrap.layout-tech .thumb-dev::after,
+#wrap.layout-tech .thumb-tools::before, #wrap.layout-tech .thumb-tools::after,
+#wrap.layout-tech .thumb-semi::before, #wrap.layout-tech .thumb-semi::after,
+#wrap.layout-tech .thumb-playground::before, #wrap.layout-tech .thumb-playground::after {
+  content: none !important;
+}
+
+#wrap.layout-tech .thumb-new { background-image: url("./images/allcontents.png") !important; }
+#wrap.layout-tech .thumb-ai { background-image: url("./images/AI.png") !important; }
+#wrap.layout-tech .thumb-principles { background-image: url("./images/engineeringprinciples.png") !important; }
+#wrap.layout-tech .thumb-cv { background-image: url("./images/CV.png") !important; }
+#wrap.layout-tech .thumb-dev { background-image: url("./images/coreTech.png") !important; }
+#wrap.layout-tech .thumb-tools { background-image: url("./images/TOOLS.png") !important; }
+#wrap.layout-tech .thumb-semi { background-image: url("./images/Semiconductor.png") !important; }
+#wrap.layout-tech .thumb-playground { background-image: url("./images/playground.png") !important; }
 
 #wrap.layout-tech .category-body {
   height: 112.5px;

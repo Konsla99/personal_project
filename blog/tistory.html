@@ -191,32 +191,33 @@
 
           .category-thumb {
             height: 137.5px !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
           }
 
-          .thumb-new {
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe) !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          /* 모든 카테고리 썸네일 내부 아이콘 완전 제거 */
+          .category-thumb::before,
+          .category-thumb::after,
+          .thumb-new::before, .thumb-new::after,
+          .thumb-ai::before, .thumb-ai::after,
+          .thumb-principles::before, .thumb-principles::after,
+          .thumb-cv::before, .thumb-cv::after,
+          .thumb-dev::before, .thumb-dev::after,
+          .thumb-tools::before, .thumb-tools::after,
+          .thumb-semi::before, .thumb-semi::after,
+          .thumb-playground::before, .thumb-playground::after {
+            content: none !important;
           }
-          .thumb-new::before {
-            content: "\ea3e"; 
-            font-family: 'xeicon';
-            font-size: 3rem;
-            color: #fff;
-          }
-          .thumb-playground {
-            background: linear-gradient(135deg, #00b894, #55efc4) !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .thumb-playground::before {
-            content: "\e960";
-            font-family: 'xeicon';
-            font-size: 3rem;
-            color: #fff;
-          }
+
+          .thumb-new { background-image: url("./images/allcontents.png") !important; }
+          .thumb-ai { background-image: url("./images/AI.png") !important; }
+          .thumb-principles { background-image: url("./images/engineeringprinciples.png") !important; }
+          .thumb-cv { background-image: url("./images/CV.png") !important; }
+          .thumb-dev { background-image: url("./images/coreTech.png") !important; }
+          .thumb-tools { background-image: url("./images/TOOLS.png") !important; }
+          .thumb-semi { background-image: url("./images/Semiconductor.png") !important; }
+          .thumb-playground { background-image: url("./images/playground.png") !important; }
 
           .category-body {
             height: 112.5px !important;
