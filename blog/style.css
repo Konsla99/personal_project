@@ -240,6 +240,9 @@ template {
   --text-main: #adbac7;
   --text-muted: #9aa6b2;
   --point-color: #539bf5;
+  --aside-width: 25%;
+  --aside-min: 300px;
+  --aside-max: 450px;
 }
 
 #wrap.layout-tech .header {
@@ -247,10 +250,11 @@ template {
 }
 
 #wrap.layout-tech .area-aside {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 520px;
+  width: var(--aside-width);
+  min-width: var(--aside-min);
+  max-width: var(--aside-max);
   height: 100vh;
   padding: 40px 30px;
   background: var(--bg-surface);
@@ -266,13 +270,20 @@ template {
   display: none; /* Chrome, Safari, Opera */
 }
 
-#wrap.layout-tech #container,
+#wrap.layout-tech #container {
+  display: flex;
+  margin-left: 0;
+  width: 100%;
+}
+
 #wrap.layout-tech #footer {
-  margin-left: 520px;
-  width: calc(100% - 520px);
+  margin-left: clamp(var(--aside-min), var(--aside-width), var(--aside-max));
+  width: auto;
 }
 
 #wrap.layout-tech .main {
+  flex: 1;
+  width: auto;
   padding: 60px 20px; /* 패딩을 줄여 여백 최소화 */
   max-width: none;
 }
@@ -510,8 +521,7 @@ template {
 }
 
 @media screen and (max-width: 1060px) {
-  #wrap.layout-tech .main {
-    display: flex;
+  #wrap.layout-tech #container {
     flex-direction: column;
   }
 
@@ -532,6 +542,7 @@ template {
   }
 
   #wrap.layout-tech .main {
+    width: 100%;
     padding: 28px 20px 60px;
   }
 
