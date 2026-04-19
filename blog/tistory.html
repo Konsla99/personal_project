@@ -159,9 +159,13 @@
             padding: 6px 20px !important;
           }
 
-          /* 블로그명 크기 2배 */
+          /* 블로그명 크기 36px 및 잘림 방지 */
           .link_logo {
             font-size: 36px !important;
+            width: auto !important;
+            overflow: visible !important;
+            white-space: nowrap !important;
+            display: block !important;
           }
           
           /* 메인 그룹박스 및 그리드 스타일 */
@@ -373,70 +377,15 @@
                 </s_not_var_logoImage>
               </a>
             </h1>
-
-            <!-- search-bar for PC -->
-						<div class="util use-top">
-							<div class="search">
-							<input class="searchInput" type="text" name="search" value="" placeholder="Search..." onkeypress="if (event.keyCode == 13) { requestSearch('.util.use-top .searchInput') }"/>
-							</div>
-						</div>
-
-
           </div>
 
-          <!-- area-align -->
-          <div class="area-align">
-
-            <s_if_var_headersloguntitle>
-              <!-- area-slogan -->
-              <div class="area-slogun [##_var_topnav_##] <s_if_var_headerslogunmobile>slogunmobileoff</s_if_var_headerslogunmobile>">
-                <strong>[##_var_headersloguntitle_##]</strong>
-                <s_if_var_headersloguntext>
-                  <p>[##_var_headersloguntext_##]</p>
-                </s_if_var_headersloguntext>
-              </div>
-              <!-- // area-slogan -->
-            </s_if_var_headersloguntitle>
-
-            <!-- area-gnb -->
-            <div class="area-gnb">
-              <nav class="[##_var_topnav_##]">
-                [##_blog_menu_##]
-              </nav>
+          <!-- search-bar for PC -->
+          <s_search>
+            <div class="search-bar-top">
+              <input type="text" name="[##_search_name_##]" value="[##_search_text_##]" onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }" placeholder="제목 또는 내용 검색...">
+              <button type="button" onclick="[##_search_onclick_submit_##]"><i class="xi-search"></i></button>
             </div>
-
-            <button type="button" class="button-menu">
-              <svg xmlns="//www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14">
-                <path fill="#333" fill-rule="evenodd" d="M0 0h20v2H0V0zm0 6h20v2H0V6zm0 6h20v2H0v-2z" />
-              </svg>
-            </button>
-
-            <s_if_var_headerbannerimage>
-              <!-- area-banner -->
-              <div class="area-promotion height400 <s_if_var_bannermobile>bannermobile-on</s_if_var_bannermobile>" style="background-image:url('[##_var_headerbannerimage_##]');">
-                <div class="inner-promotion">
-                  <div class="box-promotion">
-                    <s_if_var_headerbannertitle>
-                      <strong style="color: [##_var_headerbannertitlecolor_##]">[##_var_headerbannertitle_##]</strong>
-                    </s_if_var_headerbannertitle>
-
-                    <s_if_var_headerbannerlink>
-                      <style>
-                        .link-promotion {background:[##_var_headerbannerlinkcolor_##];}
-                        .link-promotion:hover {background:[##_var_headerbannerlinkovercolor_##];}
-                      </style>
-                      <a href="//[##_var_headerbannerlink_##]" class="link-promotion">자세히보기</a>
-                    </s_if_var_headerbannerlink>
-
-
-                  </div>
-                </div>
-              </div>
-              <!-- // area-banner -->
-            </s_if_var_headerbannerimage>
-
-          </div>
-          <!-- // area-align -->
+          </s_search>
 
         </div>
         <!-- // inner-header -->
@@ -675,7 +624,7 @@
 						<div class="util use-sidebar">
 							<div class="search">
                 <label for="searchInput" class="screen_out">블로그 내 검색</label>
-								<input id="searchInput" class="searchInput" type="text" name="search" value="" placeholder="검색내용을 입력하세요." onkeypress="if (event.keyCode == 13) { requestSearch('.util.use-sidebar .searchInput') }">
+								<input id="searchInput" class="searchInput" type="text" name="search" value="" placeholder="제목 또는 내용 검색..." onkeypress="if (event.keyCode == 13) { requestSearch('.util.use-sidebar .searchInput') }">
 							</div>
 						</div>
 
