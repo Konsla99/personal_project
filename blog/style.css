@@ -394,8 +394,8 @@ template {
   max-width: var(--aside-max);
   height: 100vh;
   padding: 40px 30px;
-  background: var(--bg-surface);
-  border-right: 1px solid var(--border-color);
+  background-color: #2d333b !important;
+  border-right: 1px solid #444c56 !important;
   overflow-y: auto;
   z-index: 50;
   -ms-overflow-style: none; /* IE and Edge */
@@ -506,7 +506,8 @@ template {
   margin: 0 0 6px;
   text-align: center;
   font-size: 1.05rem;
-  color: var(--text-main);
+  font-weight: 700 !important;
+  color: #f0f6fc !important;
 }
 
 #wrap.layout-tech .area-aside .box-profile .profile-main {
@@ -523,7 +524,7 @@ template {
   padding: 0 !important;
   font-size: 1.2rem !important;
   font-weight: 700 !important;
-  color: var(--text-main) !important;
+  color: #f0f6fc !important;
   flex-shrink: 0;
 }
 
@@ -565,7 +566,8 @@ template {
   margin: 0 0 16px;
   text-align: center;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  font-weight: 700 !important;
+  color: #f0f6fc !important;
 }
 
 #wrap.layout-tech .box-category {
@@ -586,9 +588,10 @@ template {
   display: block;
   padding: 10px 15px;
   border-radius: 6px;
-  color: var(--text-main);
+  color: #f0f6fc !important;
   text-decoration: none;
   font-size: 1.9rem; /* 폰트 크기 1.9rem (0.95rem의 2배) */
+  font-weight: 700 !important;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -611,7 +614,7 @@ template {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--text-main);
   overflow: hidden;
   transition: all 0.3s ease;
@@ -677,6 +680,7 @@ template {
   line-height: 1.2;
   word-break: break-word;
   overflow: hidden;
+  text-decoration: none !important;
 }
 
 #wrap.layout-tech .category-body p {
@@ -2038,8 +2042,9 @@ html {
 .area-aside .link-sidebar {
   display: block;
   font-size: 13px;
+  font-weight: 700 !important;
   line-height: 1.69;
-  color: var(--text-muted);
+  color: #f0f6fc !important;
   text-decoration: none;
 }
 
@@ -2054,9 +2059,9 @@ html {
   display: block;
   margin: 0 0 7px 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700 !important;
   line-height: normal;
-  color: var(--text-main);
+  color: #f0f6fc !important;
 }
 
 .area-aside .box-profile {
@@ -2225,7 +2230,8 @@ html {
   margin-left: 22px;
   font-size: 13px;
   line-height: normal;
-  color: #999;
+  color: #f0f6fc !important;
+  font-weight: 700 !important;
 }
 
 .area-aside .box-category .tt_category .category_list .link_sub_item:before {
@@ -2235,12 +2241,12 @@ html {
   left: -13px;
   width: 7px;
   height: 1px;
-  background: #999;
+  background: #f0f6fc !important;
 }
 
 .area-aside .box-category .tt_category .category_list .link_sub_item:hover {
-  font-weight: 600;
-  color: #333;
+  font-weight: 700 !important;
+  color: #333 !important;
 }
 
 .area-aside .box-category .tt_category .category_list .sub_category_list li:last-child a {
@@ -2479,14 +2485,15 @@ html {
   margin: -10px 0 3px 0;
   line-height: 1.64;
   font-size: 24px;
-  font-weight: 600;
-  color: var(--text-main);
+  font-weight: 700 !important;
+  color: #f0f6fc !important;
 }
 
 .area-aside .box-visit .item-visit {
   font-size: 13px;
+  font-weight: 700 !important;
   line-height: 1.71;
-  color: #999;
+  color: #f0f6fc !important;
 }
 
 .area-aside .box-search {
@@ -2523,7 +2530,7 @@ html {
 
 .box-reply .link-sidebar strong {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 700 !important;
   line-height: 1.54;
 }
 
@@ -6338,6 +6345,7 @@ hr[data-ke-style='style8'],
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
+  text-decoration: none !important;
 }
 
 #wrap.layout-tech .menu-section-title::after {
@@ -6363,6 +6371,13 @@ hr[data-ke-style='style8'],
   display: flex !important;
   flex-direction: column !important;
   position: relative !important;
+  text-decoration: none !important;
+}
+
+#wrap.layout-tech .category-card .card-link,
+#wrap.layout-tech .category-card .card-link strong,
+#wrap.layout-tech .sub-category-list li a {
+  text-decoration: none !important;
 }
 
 #wrap.layout-tech .category-card.expanded {
