@@ -240,9 +240,9 @@ template {
   --text-main: #adbac7;
   --text-muted: #9aa6b2;
   --point-color: #539bf5;
-  --aside-width: 25%;
-  --aside-min: 300px;
-  --aside-max: 450px;
+  --aside-width: 18%;
+  --aside-min: 250px;
+  --aside-max: 350px;
 }
 
 #wrap.layout-tech .header {
@@ -464,6 +464,43 @@ template {
   display: block;
 }
 
+/* --- Header Utilities (Search + Subscription) --- */
+.header-util-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+  margin-right: 40px !important;
+}
+
+.header-sub-btn .btn_subscription {
+  background-color: var(--point-color) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 20px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  padding: 0 15px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.header-sub-btn .btn_subscription:hover {
+  background-color: #60a5fa !important;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.6) !important;
+}
+
+.header-sub-btn .btn_subscription:active {
+  transform: scale(0.98) !important;
+  background-color: #2563eb !important;
+}
+
 #wrap.layout-tech .area-aside .box-profile .tit-g {
   padding: 0;
   margin: 0 0 6px;
@@ -472,10 +509,62 @@ template {
   color: var(--text-main);
 }
 
+#wrap.layout-tech .area-aside .box-profile .profile-main {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
+}
+
+#wrap.layout-tech .area-aside .box-profile .profile-main .tit-g {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: var(--text-main) !important;
+  flex-shrink: 0;
+}
+
+#wrap.layout-tech .area-aside .box-profile .profile-main .btn_subscription {
+  background-color: var(--point-color) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+#wrap.layout-tech .area-aside .box-profile .profile-main .btn_subscription:hover {
+  background-color: #60a5fa !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+#wrap.layout-tech .area-aside .box-profile .profile-main .btn_subscription:active {
+  transform: translateY(0) scale(0.98) !important;
+  background-color: #2563eb !important;
+}
+
+/* Common fix for Tistory subscription button internals to prevent overlap */
+.btn_subscription img { display: none !important; }
+.btn_subscription strong { display: inline !important; font-weight: inherit !important; color: inherit !important; }
+.btn_subscription em { font-style: normal !important; color: inherit !important; }
+
 #wrap.layout-tech .area-aside .box-profile .text-profile {
   margin: 0 0 16px;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
 }
 
@@ -6116,11 +6205,11 @@ hr[data-ke-style='style8'],
   text-align: center;
 }
 
-.btn_subscription strong {
-  display: none;
+.area-aside .box-profile .btn_subscription strong {
+  display: inline;
 }
 
-.btn_subscription em {
+.area-aside .box-profile .btn_subscription em {
   font-style: normal;
   font-weight: normal;
 }
