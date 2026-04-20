@@ -237,7 +237,7 @@ template {
   --bg-surface: #22272e;
   --bg-card: #2d333b;
   --border-color: #444c56;
-  --text-main: #adbac7;
+  --text-main: #f0f6fc;
   --text-muted: #9aa6b2;
   --point-color: #539bf5;
   --aside-width: 18%;
@@ -1040,7 +1040,8 @@ html {
 }
 
 #tt-body-page .main {
-  padding-top: 470px;
+  position: relative !important;
+  padding: 440px 40px 60px !important;
 }
 
 #tt-body-page .area-view img {
@@ -3322,10 +3323,12 @@ html {
 .article-header {
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 100vw;
+  left: 0;
+  right: 0;
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   height: 400px;
-  margin-left: -50vw;
   padding: 0 20px;
   background-size: cover;
   background-position: 50% 50%;
@@ -3343,8 +3346,11 @@ html {
 }
 
 .article-header .inner-header {
-  max-width: 1020px;
-  margin: 0 auto;
+  position: relative;
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  height: 100%;
   color: #fff;
 }
 
@@ -3352,7 +3358,7 @@ html {
   position: absolute;
   bottom: 56px;
   width: 100%;
-  max-width: 780px;
+  max-width: 1000px;
   z-index: 2;
 }
 
@@ -3369,7 +3375,7 @@ html {
 .article-header .title-article {
   display: block;
   width: 100%;
-  max-width: 760px;
+  max-width: 1000px;
   margin: 0 0 33px 0;
   font-size: 48px;
   font-weight: 400;
@@ -4206,13 +4212,18 @@ html {
 }
 
 .article-view {
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   margin-bottom: 12px;
   word-break: break-word;
 }
 
-.article-view p {
-  font-size: 16px;
-  line-height: 26px;
+.article-view p,
+.article-view li {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
   color: var(--text-main);
 }
 
@@ -4220,37 +4231,38 @@ html {
 .article-view h2,
 .article-view h3,
 .article-view h4 {
-  margin-bottom: 24px;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 900;
   color: var(--text-main);
 }
 
 .article-view h1 {
-  font-size: 32px;
-  line-height: 1.33;
-}
-
-.article-view h2 {
-  font-size: 24px;
-  line-height: 1.38;
-}
-
-.article-view h3 {
-  font-size: 20px;
+  font-size: 2.5rem;
   line-height: 1.4;
 }
 
+.article-view h2 {
+  font-size: 2.1rem;
+  line-height: 1.4;
+}
+
+.article-view h3 {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
 .article-view h4 {
-  font-size: 18px;
-  line-height: 1.33;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 .article-view blockquote {
-  margin: 0;
-  padding-left: 19px;
-  border-left: 1px solid;
-  font-size: 16px;
-  line-height: 1.75;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--accent);
+  font-size: 1.2rem;
+  line-height: 1.8;
   color: var(--text-muted);
 }
 
@@ -5185,45 +5197,49 @@ html {
 
 /* 텍스트 관련 */
 #article-view h2[data-ke-size] {
-  font-size: 1.62em;
-  line-height: 1.46;
+  font-size: 2.1rem;
+  line-height: 1.4;
 }
 
 #article-view h3[data-ke-size] {
-  font-size: 1.44em;
-  line-height: 1.48;
+  font-size: 1.8rem;
+  line-height: 1.5;
 }
 
 #article-view h4[data-ke-size] {
-  font-size: 1.25em;
-  line-height: 1.55;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 #article-view p[data-ke-size='size18'] {
-  font-size: 1.12em;
-  line-height: 1.67;
+  font-size: 1.3rem;
+  line-height: 1.8;
 }
 
 #article-view p[data-ke-size='size16'] {
-  line-height: 1.75;
+  font-size: 1.15rem;
+  line-height: 1.8;
 }
 
 #article-view p[data-ke-size='size14'] {
-  font-size: 0.87em;
-  line-height: 1.71;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 #article-view h2,
 #article-view h3,
 #article-view h4 {
-  font-weight: normal;
+  font-weight: 900;
   letter-spacing: -1px;
   color: var(--text-main);
-  margin: 1em 0 20px;
+  margin: 2.5rem 0 1.5rem;
 }
 
-#article-view p+p, #article-view p {
-  margin-bottom: 30px;
+#article-view p,
+#article-view li {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
 }
 
 #article-view h2+h2,
@@ -5268,38 +5284,38 @@ html {
 #article-view blockquote[data-ke-style='style1'] {
   text-align: center;
   background: url(https://t1.daumcdn.net/keditor/dist/0.7.21/image/blockquote-style1.svg) no-repeat 50% 0;
-  padding: 34px 0 0 0;
-  font-size: 1.12em;
-  color: #333;
-  line-height: 1.67;
+  padding: 34px 1.5rem 0 1.5rem;
+  font-size: 1.3rem;
+  color: var(--text-main);
+  line-height: 1.8;
   border: 0 none;
   font-family: "Noto Serif KR";
 }
 
 #article-view blockquote[data-ke-style='style2'] {
-  border-color: #d0d0d0;
+  border-color: var(--accent);
   border-width: 0 0 0 4px;
   border-style: solid;
-  padding: 1px 0 0 12px;
-  color: #666;
-  line-height: 1.75;
-  font-size: 1em;
+  padding: 1rem 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1.2rem;
   text-align: left;
 }
 
 #article-view blockquote[data-ke-style='style3'] {
-  border: 1px solid #dddddd;
-  background-color: #fcfcfc;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
   text-align: left;
-  padding: 21px 25px 20px 25px;
-  color: #666;
-  font-size: 1em;
-  line-height: 1.75;
+  padding: 1.5rem;
+  color: var(--text-main);
+  font-size: 1.15rem;
+  line-height: 1.8;
 }
 
 #article-view blockquote {
   display: block;
-  margin: 20px auto 0;
+  margin: 2.5rem auto;
   letter-spacing: 0px;
 }
 
@@ -6456,15 +6472,67 @@ hr[data-ke-style='style8'],
   display: none !important;
 }
 
-/* 상세 페이지 본문 겹침 방지: 헤더 높이만큼 본문을 아래로 밀어줌 */
+/* 상세 페이지 본문 겹침 방지: Floating Paper 레이아웃 적용 */
 #tt-body-page #wrap.layout-tech .main {
-  padding-top: 430px !important;
+  position: relative !important;
+  padding: 60px 20px 60px !important;
 }
 
 @media screen and (max-width: 1060px) {
   #tt-body-page #wrap.layout-tech .main {
-    padding-top: 410px !important;
+    padding: 40px 15px 60px !important;
   }
+}
+
+/* Floating Paper: Header & View 연결 */
+#tt-body-page .article-header {
+  position: relative !important;
+  top: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background-image: none !important;
+}
+
+#tt-body-page .article-header:before {
+  display: none !important;
+}
+
+#tt-body-page .article-header .inner-header {
+  background-color: #2d333b !important;
+  border-radius: 12px 12px 0 0 !important;
+  border: 1px solid #444c56 !important;
+  border-bottom: none !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5) !important;
+  padding: 60px 40px 30px !important;
+  height: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+#tt-body-page .article-header .box-meta {
+  position: static !important;
+  max-width: 100% !important;
+}
+
+#tt-body-page .article-header .title-article {
+  margin-bottom: 20px !important;
+  color: var(--point-color) !important;
+}
+
+#tt-body-page #article-view {
+  background-color: #2d333b !important;
+  border-radius: 0 0 12px 12px !important;
+  border: 1px solid #444c56 !important;
+  border-top: none !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5) !important;
+  padding: 40px !important;
+  margin-top: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 1000px !important;
 }
 
 /* ======================================================= */
@@ -6553,7 +6621,9 @@ hr[data-ke-style='style8'],
   border-left-color: var(--point-color) !important;
   color: var(--text-muted) !important;
   background: rgba(255, 255, 255, 0.03) !important;
-  padding: 15px 20px !important;
+  padding: 1.25rem 1.5rem !important;
+  font-size: 1.2rem !important;
+  line-height: 1.8 !important;
 }
 
 /* 5. 링크 미리보기(오픈그래프) 가독성 개선 */
