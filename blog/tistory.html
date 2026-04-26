@@ -97,6 +97,36 @@
     overflow-y: hidden !important;
     padding-bottom: 10px !important;
 }
+
+/* --- URGENT: FORCE COMMENT VISIBILITY --- */
+.area-reply *, 
+.article-reply *,
+.list-reply *,
+.item-reply *,
+[##_comment_group_##] * {
+    color: #f0f6fc !important;
+}
+
+.area-reply .box-content .text,
+.area-reply .box-content .box-meta strong a,
+.area-reply .box-content .box-meta .date,
+.area-reply .box-content .link-comment {
+    color: #f0f6fc !important;
+}
+
+/* Fix background for nested replies that might still be light */
+.area-reply .list-reply-comment {
+    background-color: #1c2128 !important;
+    border: 1px solid #444c56 !important;
+}
+
+/* Inputs in comment form */
+.area-reply .area-write input,
+.area-reply .area-write textarea {
+    color: #f0f6fc !important;
+    background-color: #0d1117 !important;
+    border: 1px solid #444c56 !important;
+}
 </style>
 
 <head>

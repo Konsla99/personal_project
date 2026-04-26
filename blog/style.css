@@ -3879,6 +3879,7 @@ html {
   background-position: 50% 50%;
   border: none;
   cursor: pointer;
+  filter: invert(1) !important;
 }
 
 .area-reply .box-content .list-modify {
@@ -3902,8 +3903,13 @@ html {
   display: block;
   line-height: 29px;
   text-align: center;
-  color: #333;
-  background-color: #fff;
+  color: #f0f6fc !important;
+  background-color: #2d333b !important;
+}
+
+.btn_reply_edit, .btn_reply_del {
+  display: inline-block !important;
+  color: #f0f6fc !important;
 }
 
 .area-reply .list-reply-comment {
@@ -6680,4 +6686,26 @@ hr[data-ke-style='style8'],
 #tt-body-page .main-header,
 #tt-body-page .menu-section-title {
   display: none !important;
+}
+
+/* Dark Mode Comment Visibility Fixes */
+[data-theme="dark"] .area-reply .box-content .box-meta strong a {
+  color: #f0f6fc !important;
+}
+
+[data-theme="dark"] .area-reply .box-content .text {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .area-reply .box-content .box-meta .date {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .area-reply .list-reply-comment {
+  background-color: #22272e !important;
+  border: 1px solid #444c56 !important;
+}
+
+[data-theme="dark"] .area-reply .item-reply {
+  border-bottom: 1px solid #444c56 !important;
 }
