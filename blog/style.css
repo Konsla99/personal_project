@@ -1041,7 +1041,7 @@ html {
 
 #tt-body-page .main {
   position: relative !important;
-  padding: 440px 40px 60px !important;
+  padding: 80px 40px 60px !important;
 }
 
 #tt-body-page .area-view img {
@@ -1061,7 +1061,7 @@ html {
 
 @media screen and (max-width: 1060px) {
   #tt-body-page .main {
-    padding-top: 440px;
+    padding-top: 0 !important;
   }
 }
 
@@ -3457,14 +3457,15 @@ html {
 /* article-tag - 상세페이지 태그  */
 .article-tag {
   display: flex;
-  margin-bottom: 46px;
-  padding-bottom: 43px;
-  border-bottom: 2px solid #333;
+  margin-bottom: 0px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #444c56;
 }
 
 .article-tag .title-footer {
   margin-right: 30px;
   padding-top: 8px;
+  color: #f0f6fc !important;
 }
 
 .article-tag .box-tag {
@@ -3478,11 +3479,11 @@ html {
   margin-right: 10px;
   margin-bottom: 5px;
   padding: 5px 12px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #444c56 !important;
   border-radius: 50px;
   font-size: 13px;
   line-height: 1.69;
-  color: #777;
+  color: #f0f6fc !important;
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3490,25 +3491,20 @@ html {
 }
 
 .article-tag .box-tag a:after {
-  content: '';
-  position: absolute;
-  bottom: 6px;
-  right: -10px;
-  width: 5px;
-  height: 5px;
-  background: #fff;
+  display: none;
 }
 
 .article-tag .box-tag a:hover {
   text-decoration: underline;
+  border-color: var(--point-color) !important;
 }
 
 /* ----- media query - mobile ----- */
 @media screen and (max-width: 1060px) {
   .article-tag {
     display: block;
-    margin-bottom: 38px;
-    padding-bottom: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
   }
 
   .article-tag .title-footer {
@@ -3522,8 +3518,7 @@ html {
   }
 
   .article-tag .box-tag a:after {
-    bottom: 4px;
-    right: -7px;
+    display: none;
   }
 }
 
@@ -6524,15 +6519,39 @@ hr[data-ke-style='style8'],
 
 #tt-body-page #article-view {
   background-color: #2d333b !important;
-  border-radius: 0 0 12px 12px !important;
+  border-radius: 0 !important; /* 연결을 위해 하단 라운드 제거 */
   border: 1px solid #444c56 !important;
   border-top: none !important;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5) !important;
+  border-bottom: none !important; /* 아래 요소와 연결 */
+  box-shadow: none !important; /* 마지막 요소에서 그림자 처리 */
   padding: 40px !important;
   margin-top: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
   max-width: 1000px !important;
+}
+
+/* Like 버튼 영역 스타일 통합 */
+.container_postbtn {
+  background-color: #2d333b !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 20px 40px !important;
+  border-left: 1px solid #444c56 !important;
+  border-right: 1px solid #444c56 !important;
+  border-bottom: none !important;
+}
+
+/* article-footer 스타일 통합 (Floating Paper 완성) */
+.article-footer {
+  background-color: #2d333b !important;
+  max-width: 1000px !important;
+  margin: 0 auto 60px !important; /* 하단 여백 추가 */
+  padding: 40px !important;
+  border: 1px solid #444c56 !important;
+  border-top: none !important;
+  border-radius: 0 0 12px 12px !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* ======================================================= */
