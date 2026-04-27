@@ -305,7 +305,7 @@ template {
   
   /* 동적 크기 및 정렬 */
   width: 100%;
-  max-width: 350px;
+  max-width: 525px;
   min-width: 200px;
   margin-right: 80px; /* 우측 여백 80px로 확대 */
 }
@@ -392,7 +392,7 @@ template {
   width: var(--aside-width);
   min-width: var(--aside-min);
   max-width: var(--aside-max);
-  height: 100vh;
+  height: 250vh;
   padding: 40px 30px;
   background-color: #2d333b !important;
   border-right: 1px solid #444c56 !important;
@@ -401,6 +401,11 @@ template {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   font-size: 2.3rem !important; /* 폰트 크기 2.3rem 고정 */
+}
+
+/* 글 상세 페이지 사이드바 높이 확장 */
+#tt-body-page #wrap.layout-tech .area-aside {
+  height: 300vh !important;
 }
 
 #wrap.layout-tech .area-aside::-webkit-scrollbar {
@@ -449,7 +454,7 @@ template {
 }
 
 #wrap.layout-tech .area-aside .box-profile {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: none !important;
   padding-bottom: 24px;
   margin-bottom: 24px;
   background: transparent;
@@ -2068,8 +2073,7 @@ html {
 .area-aside .box-profile {
   position: relative;
   margin-bottom: 43px;
-  border: 1px solid #e8e8e8;
-  border-bottom: 2px solid #333;
+  border: none !important;
   text-align: center;
 }
 
@@ -2160,9 +2164,8 @@ html {
   z-index: 1;
 }
 
-.area-aside .box-profile-invert .inner-box {
+.area-aside .box-profile-invert > * {
   position: relative;
-  height: 100%;
   z-index: 2;
 }
 
@@ -3457,6 +3460,7 @@ html {
 /* article-tag - 상세페이지 태그  */
 .article-tag {
   display: flex;
+  margin-top: 40px !important; /* 하단 푸터와의 여백 추가 */
   margin-bottom: 0px;
   padding-bottom: 30px;
   border-bottom: 1px solid #444c56;
@@ -3525,6 +3529,7 @@ html {
 /* // article-tag */
 /* article-page - 상세페이지 이전다음글  */
 .article-page {
+  margin-top: 50px !important; /* 태그 섹션과의 간격 추가 */
   margin-bottom: 46px;
   border-bottom: 1px solid #e8e8e8;
 }
@@ -5182,7 +5187,7 @@ html {
 /* 전체 공통 */
 #article-view {
   margin: 0;
-  padding: 20px 20px 50px;
+  padding: 20px 20px 120px;
   word-wrap: break-word;
   color: var(--text-main);
   min-height: 370px;
@@ -6239,7 +6244,7 @@ hr[data-ke-style='style8'],
 }
 
 .area-aside .box-profile {
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: none !important;
 }
 
 .area-aside .box-profile .img-profile {
@@ -6708,4 +6713,109 @@ hr[data-ke-style='style8'],
 
 [data-theme="dark"] .area-reply .item-reply {
   border-bottom: 1px solid #444c56 !important;
+}
+
+/* Tistory Author Information Plugin & Profile Fix */
+.tt_box_namecard,
+.container_author, 
+#container_author,
+.author_dotum,
+.type_author {
+    background-color: #1c2128 !important;
+    background: #1c2128 !important;
+    border: 1px solid #444c56 !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin: 30px auto !important;
+    max-width: 1000px !important;
+    color: #f0f6fc !important;
+}
+
+.tt_box_namecard *,
+.container_author .tit_author,
+.container_author .desc_author,
+#container_author .tit_author,
+#container_author .desc_author,
+.author_dotum .tit_author,
+.author_dotum .desc_author {
+    color: #f0f6fc !important;
+}
+
+/* 저자 섹션 프로필 이미지 교체 (span.tt_thumb_g 배경 교체 방식) */
+.tt_box_namecard .tt_wrap_thumb {
+    position: relative !important;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    border: 2px solid #444c56 !important;
+    overflow: hidden !important;
+    background: #1c2128 !important;
+    display: inline-block !important;
+}
+
+.tt_box_namecard .tt_thumb_g {
+    background-image: url('./images/logo_konsla.png') !important; /* 인라인 스타일 무력화 */
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.tt_box_namecard .tt_wrap_thumb img {
+    display: none !important; /* img 태그가 존재할 경우 숨김 */
+}
+
+/* 사용자 제공 스타일 반영 */
+.tt_box_namecard .tt_wrap_thumb:after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, .04) !important;
+    pointer-events: none !important;
+}
+
+/* 구독하기 버튼 파란색 오버라이드 */
+.tt_box_namecard .tt_btn_subscribe,
+.tt_box_namecard .tt_btn_subscribe *,
+.tt_btn_subscribe {
+    background-color: var(--point-color) !important;
+    background: var(--point-color) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 5px 15px !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+/* 추가적인 흰색 박스 오버라이드 (티스토리 기본 컴포넌트) */
+.another_category,
+.another_category_color_gray,
+.another_category_color_ {
+    background-color: #1c2128 !important;
+    border: 1px solid #444c56 !important;
+    border-radius: 12px !important;
+    color: #f0f6fc !important;
+    padding: 20px !important;
+    margin: 30px auto !important;
+    max-width: 1000px !important;
+}
+
+.another_category h4,
+.another_category h4 a {
+    color: #f0f6fc !important;
+}
+
+.another_category table th,
+.another_category table td {
+    color: #adbac7 !important;
+}
+ td {
+    color: #adbac7 !important;
+}
+
 }

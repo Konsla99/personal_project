@@ -103,6 +103,10 @@
 .article-reply *,
 .list-reply *,
 .item-reply *,
+.container_author *,
+#container_author *,
+.tt_box_namecard *,
+.another_category *,
 [##_comment_group_##] * {
     color: #f0f6fc !important;
 }
@@ -439,47 +443,45 @@
               <s_sidebar_element>
                 <!-- 프로필 -->
 								<div class="box-profile <s_if_var_Profilebgimage>box-profile-invert</s_if_var_Profilebgimage>" style="background-image:url('<s_if_var_Profilebgimage>[##_var_Profilebgimage_##]</s_if_var_Profilebgimage>');">
-									<div class="inner-box">
-										<img src="[##_image_##]" class="img-profile" alt="프로필사진">
-										<p class="tit-g">[##_title_##]</p>
-                    <p class="text-profile">[##_desc_##]</p>
-                    <!-- 블로그 소유자 접속시 보여지는 버튼 -->
-										[##_subscription_button_##]
-                    <!-- 블로그 소유자가 아닌 경우 보여지는 버튼 그룹 -->
-                    <div class="profile-btn-group [##_role_group_##]">
-                        <button type="button" class="btn-g btn-primary btn-write">글쓰기</button> 
-                        <button type="button" class="btn-g btn-blog-manage">블로그 관리</button> 
-                    </div>
-										<div class="box-sns">
-											<s_if_var_Profilefacebooklink>
-												<a href="//[##_var_Profilefacebooklink_##]" class="link-sns link-facebook">
-													<svg xmlns="//www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 8 16" class="svg">
-														<path fill="#B3B3B3" fill-rule="evenodd" d="M8 5v3H5v8H2V8H0V5h2V2a2 2 0 0 1 2-2h4v3H6a1 1 0 0 0-1 1v1h3z" />
-													</svg>
-												</a>
-											</s_if_var_Profilefacebooklink>
-											<s_if_var_Profileyoutubelink>
-												<a href="//[##_var_Profileyoutubelink_##]" class="link-sns link-youtube">
-													<svg xmlns="//www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" class="svg">
-														<path fill="#B3B3B3" fill-rule="evenodd" d="M4 0h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm3 4l3 2-3 2V4z" />
-													</svg>
-												</a>
-											</s_if_var_Profileyoutubelink>
-											<s_if_var_Profileinstalink>
-												<a href="//[##_var_Profileinstalink_##]" class="link-sns link-insta">
-													<svg xmlns="//www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="svg">
-														<path fill="#B3B3B3" fill-rule="evenodd" d="M4 0h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm0 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm4 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm4-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-													</svg>
-												</a>
-											</s_if_var_Profileinstalink>
-											<s_if_var_Profiletwitterlink>
-												<a href="//[##_var_Profiletwitterlink_##]" class="link-sns link-twitter">
-													<svg xmlns="//www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" class="svg">
-														<path fill="#B3B3B3" fill-rule="evenodd" d="M14.476 3.059S14.825 13 5.333 13A10.044 10.044 0 0 1 0 11.471a7.423 7.423 0 0 0 3.81-1.529 3.091 3.091 0 0 1-2.286-1.529h1.524A8.616 8.616 0 0 1 0 4.588h1.524S.45 4.075.762.764a8.438 8.438 0 0 0 6.095 3.059.766.766 0 0 0 .762-.765S7.646 0 11.429 0a4.071 4.071 0 0 1 2.285.765L16 0l-1.524 1.529H16l-1.524 1.53z" />
-													</svg>
-												</a>
-											</s_if_var_Profiletwitterlink>
-										</div>
+									<img src="./images/logo_konsla.png" class="img-profile" alt="프로필사진">
+									<p class="tit-g">[##_title_##]</p>
+                  <p class="text-profile">[##_desc_##]</p>
+                  <!-- 블로그 소유자 접속시 보여지는 버튼 -->
+									[##_subscription_button_##]
+                  <!-- 블로그 소유자가 아닌 경우 보여지는 버튼 그룹 -->
+                  <div class="profile-btn-group [##_role_group_##]">
+                      <button type="button" class="btn-g btn-primary btn-write">글쓰기</button> 
+                      <button type="button" class="btn-g btn-blog-manage">블로그 관리</button> 
+                  </div>
+									<div class="box-sns">
+										<s_if_var_Profilefacebooklink>
+											<a href="//[##_var_Profilefacebooklink_##]" class="link-sns link-facebook">
+												<svg xmlns="//www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 8 16" class="svg">
+													<path fill="#B3B3B3" fill-rule="evenodd" d="M8 5v3H5v8H2V8H0V5h2V2a2 2 0 0 1 2-2h4v3H6a1 1 0 0 0-1 1v1h3z" />
+												</svg>
+											</a>
+										</s_if_var_Profilefacebooklink>
+										<s_if_var_Profileyoutubelink>
+											<a href="//[##_var_Profileyoutubelink_##]" class="link-sns link-youtube">
+												<svg xmlns="//www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" class="svg">
+													<path fill="#B3B3B3" fill-rule="evenodd" d="M4 0h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm3 4l3 2-3 2V4z" />
+												</svg>
+											</a>
+										</s_if_var_Profileyoutubelink>
+										<s_if_var_Profileinstalink>
+											<a href="//[##_var_Profileinstalink_##]" class="link-sns link-insta">
+												<svg xmlns="//www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="svg">
+													<path fill="#B3B3B3" fill-rule="evenodd" d="M4 0h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm0 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm4 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm4-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+												</svg>
+											</a>
+										</s_if_var_Profileinstalink>
+										<s_if_var_Profiletwitterlink>
+											<a href="//[##_var_Profiletwitterlink_##]" class="link-sns link-twitter">
+												<svg xmlns="//www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" class="svg">
+													<path fill="#B3B3B3" fill-rule="evenodd" d="M14.476 3.059S14.825 13 5.333 13A10.044 10.044 0 0 1 0 11.471a7.423 7.423 0 0 0 3.81-1.529 3.091 3.091 0 0 1-2.286-1.529h1.524A8.616 8.616 0 0 1 0 4.588h1.524S.45 4.075.762.764a8.438 8.438 0 0 0 6.095 3.059.766.766 0 0 0 .762-.765S7.646 0 11.429 0a4.071 4.071 0 0 1 2.285.765L16 0l-1.524 1.529H16l-1.524 1.53z" />
+												</svg>
+											</a>
+										</s_if_var_Profiletwitterlink>
 									</div>
 								</div>
               </s_sidebar_element>
