@@ -6818,4 +6818,48 @@ hr[data-ke-style='style8'],
     color: #adbac7 !important;
 }
 
+/* ======================================================= */
+/* 추가 UI 개선: 댓글창, 사이드바 프로필 및 관리 버튼 */
+/* ======================================================= */
+
+/* 1. 댓글 입력창 크기 조절 기능 제거 */
+.area-write .box-textarea textarea {
+  resize: none !important;
+}
+
+/* 2. 사이드바 구독하기 버튼 텍스트 넘침 방지 */
+.area-aside .box-profile .btn_subscription {
+  white-space: nowrap !important;
+  min-width: fit-content !important;
+  padding: 0 15px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. 사이드바 프로필 텍스트 가운데 정렬 */
+#wrap.layout-tech .area-aside .box-profile .tit-g,
+#wrap.layout-tech .area-aside .box-profile .text-profile,
+#wrap.layout-tech .area-aside .box-profile .profile-main {
+  text-align: center !important;
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+/* 4. 사이드바 프로필 섹션 강조 (배경색 및 효과 추가) */
+#wrap.layout-tech .area-aside .box-profile {
+  background-color: #2d333b !important; /* var(--bg-card)와 일치 */
+  border: 1px solid #444c56 !important;
+  border-radius: 12px !important;
+  padding: 30px 20px !important;
+  margin-bottom: 40px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 5. 블로그 관리 버튼 텍스트 색상 수정 (검은색) */
+.btn-blog-manage,
+.btn_tool,
+#wrap.layout-tech .area-aside .box-profile .btn_tool {
+  color: #000 !important;
+  font-weight: 700 !important;
 }
