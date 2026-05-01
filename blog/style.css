@@ -403,6 +403,104 @@ template {
   font-size: 2.3rem !important; /* 폰트 크기 2.3rem 고정 */
 }
 
+/* 모바일 메인 헤더 스타일 */
+.mobile-main-header {
+  display: none;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.mobile-main-header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: var(--point-color);
+  margin: 0 0 10px;
+}
+
+.mobile-main-header p {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media screen and (max-width: 1060px) {
+  .mobile-main-header {
+    display: block;
+  }
+}
+
+/* 비례 제어 및 가변 크기 (Aspect Ratio & Proportional Scaling) */
+#wrap.layout-tech .category-card {
+  aspect-ratio: 1 / 1.1; /* 고정 비율 유지 */
+  height: auto !important; /* 고정 높이 제거 */
+  min-height: unset !important;
+}
+
+#wrap.layout-tech .category-thumb {
+  height: 55% !important; /* 비율로 조정 */
+}
+
+#wrap.layout-tech .category-body {
+  height: 45% !important; /* 비율로 조정 */
+  padding: 5% !important; /* 상대 단위 패딩 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#wrap.layout-tech .category-body strong {
+  font-size: clamp(1rem, 2.5vw, 1.4rem) !important; /* 동적 폰트 크기 */
+  line-height: 1.3 !important;
+  word-break: break-all;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#wrap.layout-tech .article-type-common {
+  aspect-ratio: 1 / 1.3;
+  height: auto !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#wrap.layout-tech .article-type-common .thumbnail {
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  width: 100%;
+}
+
+#wrap.layout-tech .article-type-common .article-content {
+  flex: 1;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#wrap.layout-tech .article-type-common .title {
+  font-size: clamp(1rem, 2vw, 1.25rem) !important;
+  margin-bottom: 8px !important;
+  line-height: 1.4 !important;
+  word-break: break-all;
+}
+
+/* 구독 버튼 항상 채우기 */
+.btn_subscription {
+  background-color: var(--point-color) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.btn_subscription:hover {
+  background-color: #60a5fa !important;
+  opacity: 0.9;
+}
+
 /* 글 상세 페이지 사이드바 높이 확장 */
 #tt-body-page #wrap.layout-tech .area-aside {
   height: 300vh !important;
@@ -761,19 +859,13 @@ template {
   }
 
   #wrap.layout-tech .area-aside {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    padding: 24px 20px;
-    order: -1;
+    display: none !important; /* 모바일 사이드바 제거 */
   }
 
   #wrap.layout-tech #container,
   #wrap.layout-tech #footer {
-    margin-left: 0;
-    width: 100%;
+    margin-left: 0 !important;
+    width: 100% !important;
   }
 
   #wrap.layout-tech .main {
@@ -785,10 +877,34 @@ template {
     font-size: 1.8rem;
   }
 
-  #wrap.layout-tech .area-common,
-  #wrap.layout-tech .box-article,
+  /* 카테고리 그리드: 태블릿 3열, 모바일 2열/1열 */
   #wrap.layout-tech .category-grid {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 15px !important;
+  }
+
+  /* 글 목록 그리드: 태블릿 3열, 모바일 2열/1열 */
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 15px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #wrap.layout-tech .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #wrap.layout-tech .category-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
 }
 
@@ -6378,21 +6494,22 @@ hr[data-ke-style='style8'],
   margin-left: 20px;
 }
 
-/* 3. 카테고리 그리드 (1x6 형태 - 큼직하게) */
+/* 3. 카테고리 그리드 (데스크탑 기준) */
 #wrap.layout-tech .category-grid {
-  display: grid !important;
-  grid-template-columns: repeat(6, 1fr) !important; /* 한 줄에 6개 고정 */
-  gap: 15px !important;
-  margin-bottom: 40px !important;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 #wrap.layout-tech .category-card {
-  width: 100% !important;
-  max-width: none !important;
-  height: 250px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 1 / 1.1; /* 고정 비율 유지 */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   text-decoration: none !important;
 }
 
@@ -6403,48 +6520,106 @@ hr[data-ke-style='style8'],
 }
 
 #wrap.layout-tech .category-card.expanded {
-  height: auto !important;
-  min-height: 250px !important;
+  height: auto;
+  min-height: 250px;
 }
 
 #wrap.layout-tech .category-thumb {
-  height: 137.5px !important;
-  flex-shrink: 0 !important;
+  height: 55%;
+  flex-shrink: 0;
 }
 
 #wrap.layout-tech .category-body {
-  height: 112.5px !important;
-  padding: 20px 60px 20px 20px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
+  height: 45%;
+  padding: 5% 15% 5% 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #wrap.layout-tech .category-body strong {
-  display: block !important;
-  font-size: 22px !important;
-  margin-bottom: 0 !important;
-  color: var(--point-color) !important;
-  line-height: 1.2 !important;
-  word-break: break-word !important;
-  overflow: hidden !important;
+  display: block;
+  font-size: clamp(0.9rem, 2vw, 1.4rem); /* 폰트 크기 동적 조절 */
+  margin-bottom: 0;
+  color: var(--point-color);
+  line-height: 1.2;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 #wrap.layout-tech .category-body p {
-  margin: 0 !important;
-  color: var(--text-muted) !important;
-  font-size: 1.1rem !important;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
 }
 
 #wrap.layout-tech .article-list-wrapper .box-article-list {
-  display: grid !important;
-  grid-template-columns: repeat(5, 1fr) !important; /* 한 줄에 5개 고정 */
-  gap: 20px !important;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
 }
 
 #wrap.layout-tech .article-list-wrapper .box-article-list article {
-  width: 100% !important;
-  max-width: none !important;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 1 / 1.3;
+  height: auto;
+}
+
+/* ======================================================= */
+/* 반응형 그리드 및 비례 제어 (모든 기기 대응) */
+/* ======================================================= */
+
+@media screen and (max-width: 1400px) {
+  #wrap.layout-tech .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  #wrap.layout-tech .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  #wrap.layout-tech .area-aside {
+    display: none !important;
+  }
+  
+  #wrap.layout-tech #container,
+  #wrap.layout-tech #footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #wrap.layout-tech .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  #wrap.layout-tech .category-body strong {
+    font-size: clamp(0.8rem, 4vw, 1.1rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #wrap.layout-tech .category-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #wrap.layout-tech .article-list-wrapper .box-article-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* 펼치기 버튼 디자인 강화 */
