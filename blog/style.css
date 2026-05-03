@@ -5316,6 +5316,29 @@ html {
   fill: #fff !important;
 }
 
+/* 티스토리 레이어 관리 메뉴 다크 테마 적용 */
+.inner_header_layer,
+.layer_edit,
+.layer_open {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.inner_header_layer a,
+.layer_edit a,
+.layer_open a {
+    color: var(--text-main) !important;
+}
+
+.inner_header_layer a:hover,
+.layer_edit a:hover,
+.layer_open a:hover {
+    background-color: var(--bg-card) !important;
+    color: var(--point-color) !important;
+}
+
 /* 전체 공통 */
 #article-view {
   margin: 0;
