@@ -202,7 +202,7 @@
             display: block !important;
           }
           
-          /* 메인 그룹박스 및 그리드 스타일 */
+          /* 메인 그룹박스 및 그리드 스타일 (그리드 열 개수는 style.css에서 제어) */
           .category-area-wrapper,
           .article-list-wrapper {
             width: 100% !important;
@@ -214,13 +214,6 @@
             background-color: rgba(255,255,255,0.015);
             transition: transform 0.3s ease;
           }
-          .category-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr) !important; /* 다시 한 줄에 6개로 고정 */
-            gap: 15px !important;
-            margin-bottom: 30px;
-            justify-items: center;
-          }
 
           .category-card.expanded {
             height: auto;
@@ -228,7 +221,6 @@
           }
 
           .category-thumb {
-            height: 137.5px !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
@@ -256,12 +248,6 @@
           .thumb-tools { background-image: url("./images/TOOLS.png") !important; }
           .thumb-semi { background-image: url("./images/Semiconductor.png") !important; }
           .thumb-playground { background-image: url("./images/playground.png") !important; }
-
-          .category-body {
-            height: 112.5px !important;
-            padding: 25px 60px 15px 15px !important;
-            justify-content: flex-start !important;
-          }
           
           /* 카테고리 인덱스 스타일 */
           .category-index {
@@ -286,13 +272,6 @@
             content: ""; width: 5px; height: 24px; background: var(--point-color); margin-right: 12px; border-radius: 2px;
           }
 
-          /* 포스트 그리드 5열로 수정 */
-          .box-article-list {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important; /* 3 -> 5 */
-            gap: 20px !important;
-            justify-items: center;
-          }
           .box-article-list article {
             width: 100% !important;
             max-width: none !important; /* 가로 가득 채우기 */
@@ -300,33 +279,38 @@
           }
 
           /* 펼치기 버튼 디자인 대폭 강화 */
+          .card-footer-buttons {
+            width: 100%;
+            padding: 10px 18px;
+            text-align: right;
+            position: relative;
+            z-index: 10;
+            box-sizing: border-box;
+          }
           .index-label {
-            position: absolute;
-            right: 50px; /* 버튼이 right: 12px이므로 그 왼쪽 */
-            bottom: 12px;
+            display: inline-block;
             font-size: 0.9rem;
             font-weight: 800;
             color: var(--point-color);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-right: 10px;
+            vertical-align: middle;
           }
           .btn-expand {
-            position: absolute;
-            right: 12px;
-            bottom: 12px;
+            display: inline-flex;
             width: 32px;
             height: 32px;
             background-color: var(--point-color) !important;
             color: #ffffff !important;
             border: 2px solid #ffffff;
             border-radius: 8px;
-            display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
-            z-index: 10;
+            vertical-align: middle;
           }
           .btn-expand:hover {
             transform: scale(1.1);
@@ -359,6 +343,8 @@
           }
 
           .sub-category-list {
+            width: 100%;
+            box-sizing: border-box;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -372,6 +358,7 @@
             max-height: 500px;
             padding: 20px;
             border-top-width: 1px;
+            /* margin-top: 50px 제거됨: 버튼이 flow에 포함되어 자연스럽게 아래에 위치함 */
           }
           .sub-category-list li {
             margin-bottom: 10px;
@@ -691,10 +678,12 @@
                   <strong>전체 글</strong>
                 </div>
               </a>
-              <span class="index-label">Index</span>
-              <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                <i class="xi-angle-down"></i>
-              </button>
+              <div class="card-footer-buttons">
+                <span class="index-label">Index</span>
+                <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                  <i class="xi-angle-down"></i>
+                </button>
+              </div>
               <ul class="sub-category-list">
               </ul>
             </div>
@@ -707,10 +696,12 @@
                       <strong>AI</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <li><a href="[##_blog_link_##]category/AI/프롬프트%20엔지니어링">프롬프트 엔지니어링</a></li>
                     <li><a href="[##_blog_link_##]category/AI/AI%20서비스">AI 서비스</a></li>
@@ -726,10 +717,12 @@
                       <strong>Engineering Principles</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <li><a href="[##_blog_link_##]category/Engineering%20Principles/설계방식">설계방식</a></li>
                     <li><a href="[##_blog_link_##]category/Engineering%20Principles/Convention">Convention</a></li>
@@ -745,10 +738,12 @@
                       <strong>Computer Vision</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <li><a href="[##_blog_link_##]category/Computer%20Vision/캘리브레이션">캘리브레이션</a></li>
                   </ul>
@@ -762,10 +757,12 @@
                       <strong>Core Tech<br>(기반 기술)</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <li><a href="[##_blog_link_##]category/Core%20Tech%20(%EA%B8%B0%EB%B0%98%20%EA%B8%B0%EC%88%A0)/CMake">CMake</a></li>
                     <li><a href="[##_blog_link_##]category/Core%20Tech%20(%EA%B8%B0%EB%B0%98%20%EA%B8%B0%EC%88%A0)/언어">언어</a></li>
@@ -783,10 +780,12 @@
                       <strong>TOOLS</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <li><a href="[##_blog_link_##]category/TOOLS/마크다운%20<옵시디언>">마크다운 &lt;옵시디언&gt;</a></li>
                     <li><a href="[##_blog_link_##]category/TOOLS/Git%20&%20GitHub">Git &amp; GitHub</a></li>
@@ -802,10 +801,12 @@
                       <strong>SemiConductor</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <li><a href="[##_blog_link_##]category/SemiConductor/SEMI%20standard">SEMI standard</a></li>
                     <li><a href="[##_blog_link_##]category/SemiConductor/이론">이론</a></li>
@@ -820,10 +821,12 @@
                       <strong>PLAYGROUND</strong>
                     </div>
                   </a>
-                  <span class="index-label">Index</span>
-                  <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
-                    <i class="xi-angle-down"></i>
-                  </button>
+                  <div class="card-footer-buttons">
+                    <span class="index-label">Index</span>
+                    <button type="button" class="btn-expand" onclick="toggleCategoryCard(this, event)">
+                      <i class="xi-angle-down"></i>
+                    </button>
+                  </div>
                   <ul class="sub-category-list">
                     <!-- 하위 카테고리 필요 시 추가 -->
                   </ul>
