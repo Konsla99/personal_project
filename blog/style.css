@@ -34,37 +34,29 @@ hr {
 }
 
 pre {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-a {
-  background-color: transparent;
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-abbr[title] {
-  border-bottom: none;
-  /* 1 */
-  text-decoration: underline;
-  /* 2 */
-  text-decoration: underline dotted;
-  /* 2 */
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+pre code {
+  display: block;
+  padding: 1.2em !important;
+  overflow-x: auto;
+  background-color: #282c34 !important; /* atom-one-dark base background */
+  border-radius: 0;
 }
 
 small {
@@ -4542,7 +4534,6 @@ html {
 .article-view pre {
   background: rgba(0, 0, 0, 0.05);
   font-size: 16px;
-  color: rgba(34, 85, 51, 0.87);
   white-space: pre-wrap;
 }
 
@@ -6970,12 +6961,28 @@ hr[data-ke-style='style8'],
 /* 3. 코드 블록(Code Block) 개선 */
 #article-view pre code.hljs {
   background-color: #0d1117 !important; /* 더 깊은 블랙 배경 */
-  color: #c9d1d9 !important; /* 밝은 텍스트 고정 */
   border-radius: 8px !important;
   border: 1px solid var(--border-color) !important;
   font-size: 15px !important;
   line-height: 1.6 !important;
+  overflow-x: auto !important;
+  display: block !important;
+  color: #abb2bf !important; /* 기본 텍스트 색상 */
 }
+
+/* Highlight.js 테마 강제 적용 (atom-one-dark 스타일) */
+.hljs-keyword, .hljs-selector-tag, .hljs-built_in, .hljs-name { color: #c678dd !important; } /* 보라색 */
+.hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #98c379 !important; } /* 초록색 */
+.hljs-title, .hljs-section { color: #61afef !important; } /* 파란색 */
+.hljs-variable, .hljs-template-variable, .hljs-attribute, .hljs-tag { color: #d19a66 !important; } /* 주황색 */
+.hljs-comment, .hljs-quote { color: #5c6370 !important; font-style: italic !important; } /* 회색 (이탤릭) */
+.hljs-number, .hljs-regexp, .hljs-literal, .hljs-type, .hljs-link { color: #d19a66 !important; } /* 주황색/빨간색 */
+.hljs-params, .hljs-attr { color: #d19a66 !important; }
+.hljs-subst { color: #abb2bf !important; }
+.hljs-formula { background-color: #3e4451 !important; }
+.hljs-doctag { color: #c678dd !important; }
+.hljs-meta, .hljs-meta .hljs-keyword { color: #e06c75 !important; }
+.hljs-meta .hljs-string { color: #98c379 !important; }
 
 /* 4. 테이블(Table) 가시성 개선 */
 #article-view table {
