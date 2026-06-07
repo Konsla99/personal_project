@@ -6,7 +6,7 @@
 /* ======================================================= */
 
 /* 기본 콜아웃 컨테이너 */
-#article-view .my-callout {
+.my-callout {
     --callout-rgb: 56, 189, 248; /* 기본 색상: Info */
     border: 1px solid rgba(var(--callout-rgb), 0.6) !important;
     border-left: 6px solid rgb(var(--callout-rgb)) !important;
@@ -20,7 +20,7 @@
 }
 
 /* 콜아웃 제목 영역 */
-#article-view .my-callout-title {
+.my-callout-title {
     display: flex !important;
     align-items: center !important;
     padding: 12px 16px !important;
@@ -33,56 +33,57 @@
 }
 
 /* 토글 아이콘 (가상요소로 생성) */
-#article-view .my-callout-title::before {
+.my-callout-title::before {
     content: '▶' !important;
     font-size: 0.8em !important;
     margin-right: 8px !important;
+    transform: rotate(90deg) !important; /* 기본: 펼쳐진 상태 */
     transition: transform 0.2s ease-in-out !important;
 }
 
-/* 콜아웃 본문 (기본적으로 숨김) */
-#article-view .my-callout-content {
-    display: none;
+/* 콜아웃 본문 (기본적으로 펼침) */
+.my-callout-content {
+    display: block !important; /* 기본: 보임 */
     padding: 16px !important;
     padding-top: 12px !important;
     color: var(--text-main) !important;
     border-top: 1px solid rgba(var(--callout-rgb), 0.25) !important;
 }
 
-/* 'open' 클래스가 추가되었을 때의 스타일 */
-#article-view .my-callout.open .my-callout-title::before {
-    transform: rotate(90deg) !important;
+/* 'collapsed' 클래스가 추가되었을 때의 스타일 (접힘 상태) */
+.my-callout.collapsed .my-callout-title::before {
+    transform: rotate(0deg) !important; /* 접힘: 0도 */
 }
-#article-view .my-callout.open .my-callout-content {
-    display: block !important;
+.my-callout.collapsed .my-callout-content {
+    display: none !important; /* 접힘: 숨김 */
 }
 
 /* 제목 안의 이모지 아이콘 */
-#article-view .my-callout-icon {
+.my-callout-icon {
     margin-right: 8px !important;
     font-size: 1.2em !important;
     line-height: 1 !important;
 }
 
 /* --- 유형별 색상 및 아이콘 정의 --- */
-#article-view .my-callout.info { --callout-rgb: 56, 189, 248 !important; }
-#article-view .my-callout.info .my-callout-icon::before { content: '💡' !important; }
+.my-callout.info { --callout-rgb: 56, 189, 248 !important; }
+.my-callout.info .my-callout-icon::before { content: '💡' !important; }
 
-#article-view .my-callout.abstract { --callout-rgb: 147, 112, 219 !important; }
-#article-view .my-callout.abstract .my-callout-icon::before { content: '📚' !important; }
+.my-callout.abstract { --callout-rgb: 147, 112, 219 !important; }
+.my-callout.abstract .my-callout-icon::before { content: '📚' !important; }
 
-#article-view .my-callout.warning { --callout-rgb: 251, 146, 60 !important; }
-#article-view .my-callout.warning .my-callout-icon::before { content: '⚠️' !important; }
+.my-callout.warning { --callout-rgb: 251, 146, 60 !important; }
+.my-callout.warning .my-callout-icon::before { content: '⚠️' !important; }
 
-#article-view .my-callout.example { --callout-rgb: 70, 130, 180 !important; }
-#article-view .my-callout.example .my-callout-icon::before { content: '✨' !important; }
+.my-callout.example { --callout-rgb: 70, 130, 180 !important; }
+.my-callout.example .my-callout-icon::before { content: '✨' !important; }
 
-#article-view .my-callout.note { --callout-rgb: 52, 211, 153 !important; }
-#article-view .my-callout.note .my-callout-icon::before { content: '📝' !important; }
+.my-callout.note { --callout-rgb: 52, 211, 153 !important; }
+.my-callout.note .my-callout-icon::before { content: '📝' !important; }
 
 /* 리스트 마커 색상 통일 */
-#article-view .my-callout ul li::marker,
-#article-view .my-callout ol li::marker {
+.my-callout ul li::marker,
+.my-callout ol li::marker {
     color: rgb(var(--callout-rgb)) !important;
 }
 
@@ -1531,10 +1532,10 @@ if (typeof calloutScriptLoaded === 'undefined') {
         // 클릭된 요소가 .my-callout-title이거나 그 자식인지 확인
         const title = event.target.closest('.my-callout-title');
         if (title) {
-            // 부모 .my-callout을 찾아 'open' 클래스를 토글
+            // 부모 .my-callout을 찾아 'collapsed' 클래스를 토글
             const callout = title.parentElement;
             if (callout && callout.classList.contains('my-callout')) {
-                callout.classList.toggle('open');
+                callout.classList.toggle('collapsed');
             }
         }
     });
