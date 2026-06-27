@@ -13,9 +13,20 @@ description: style-settings/ 디렉토리 내 마크다운 설정 파일의 변�
    - 복잡한 정규식 매칭 및 태그 구조 치환을 직접 수행하지 않고, 내장된 자동화 파이썬 스크립트인 [sync.py](file:///D:/git_hub_repository/personal_project/blog/.agents/skills/style-settings-sync/scripts/sync.py)를 실행하여 정확히 수정합니다.
    
 2. **동기화 실행 방법:**
-   - 아래의 명령어를 PowerShell 또는 Windows CMD에서 실행하여 동기화를 완료합니다:
+   - 기본적으로 스크립트는 `git status`를 확인하여 `style-settings/` 폴더 내에서 **실제 변경된 설정 파일만 똑똑하게 선택적으로 동기화**합니다 (예: 카테고리 파일만 고쳤다면 CSS 스타일 갱신은 실행을 건너뜁니다).
+   - 아래의 명령어를 통해 실행하며, 명시적인 강제 옵션을 줄 수도 있습니다:
      ```powershell
+     # 변경 감지된 항목만 스마트하게 동기화 (기본)
      python .agents/skills/style-settings-sync/scripts/sync.py
+
+     # 모든 설정 파일 무조건 강제 동기화
+     python .agents/skills/style-settings-sync/scripts/sync.py --all
+
+     # 스타일 설정(CSS)만 무조건 강제 동기화
+     python .agents/skills/style-settings-sync/scripts/sync.py --css
+
+     # 카테고리 목록(HTML)만 무조건 강제 동기화
+     python .agents/skills/style-settings-sync/scripts/sync.py --html
      ```
    
 3. **변경 결과 검증:**

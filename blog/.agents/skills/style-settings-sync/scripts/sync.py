@@ -1,12 +1,16 @@
 import os
 import re
 import urllib.parse
+import sys
+import subprocess
 
-def parse_markdown_tables(directory):
+def parse_markdown_tables(directory, target_files=None):
     styles = []
     # style-settings 디렉토리 내 모든 md 파일 파싱 (category-list.md 제외)
     for filename in os.listdir(directory):
         if not filename.endswith('.md') or filename == 'category-list.md':
+            continue
+        if target_files is not None and filename not in target_files:
             continue
         filepath = os.path.join(directory, filename)
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -238,6 +242,24 @@ def update_html_categories(html_path, categories_html):
     else:
         print("Error: Matching closing div for category-grid not found")
 
+def get_modified_files(settings_dir):
+    try:
+        # git status --porcelain [directory] 실행하여 변경된 파일 목록 확인
+        res = subprocess.run(['git', 'status', '--porcelain', settings_dir], 
+                             capture_output=True, text=True, check=True)
+        modified = []
+        for line in res.stdout.split('\n'):
+            if line.strip():
+                # ' M style-settings/sidebar.md' 또는 '?? style-settings/sidebar.md' 형태 파싱
+                parts = line.strip().split()
+                if len(parts) >= 2:
+                    filepath = parts[-1]
+                    modified.append(os.path.basename(filepath))
+        return modified
+    except Exception as e:
+        print(f"Git check failed: {e}")
+        return None
+
 def main():
     # 작업 디렉토리는 스크립트 실행 위치 기준으로 상위 blog 폴더 설정
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
@@ -245,16 +267,47 @@ def main():
     css_path = os.path.join(base_dir, "style.css")
     html_path = os.path.join(base_dir, "tistory.html")
     
-    # 1. 스타일 변경 사항 반영
-    print("Parsing style settings...")
-    styles = parse_markdown_tables(settings_dir)
-    print(f"Found {len(styles)} style properties to sync.")
-    update_css(css_path, styles)
-    print("style.css synchronized successfully.")
+    # 1. 인자 처리 및 변경된 파일 감지
+    args = sys.argv[1:]
+    force_all = "--all" in args
+    force_css = "--css" in args
+    force_html = "--html" in args or "--category" in args
     
-    # 2. 카테고리 리스트 변경 사항 반영
+    modified_files = None
+    if not (force_all or force_css or force_html):
+        # 명시적 인자가 없으면 git 변경점을 감지하여 스마트 동기화 진행
+        print("Detecting modified settings via git status...")
+        modified_files = get_modified_files(settings_dir)
+        if modified_files is not None:
+            if not modified_files:
+                print("No modified setting files detected in style-settings/. Sync skipped.")
+                return
+            print(f"Modified files detected: {modified_files}")
+        else:
+            print("Processing all files as fallback.")
+            force_all = True
+            
+    # 2. 스타일 변경 사항 반영
+    sync_css_files = None
+    if not force_all and not force_css and modified_files is not None:
+        # 변경된 파일 중 스타일 관련 md 파일만 필터링
+        sync_css_files = [f for f in modified_files if f != 'category-list.md' and f.endswith('.md')]
+        
+    if force_all or force_css or (sync_css_files):
+        print("Parsing style settings...")
+        styles = parse_markdown_tables(settings_dir, target_files=sync_css_files)
+        if styles:
+            print(f"Found {len(styles)} style properties to sync.")
+            update_css(css_path, styles)
+            print("style.css synchronized successfully.")
+        else:
+            print("No style properties found to sync.")
+            
+    # 3. 카테고리 리스트 변경 사항 반영
     category_list_path = os.path.join(settings_dir, "category-list.md")
-    if os.path.exists(category_list_path):
+    should_sync_html = force_all or force_html or (modified_files is not None and 'category-list.md' in modified_files)
+    
+    if should_sync_html and os.path.exists(category_list_path):
         print("Parsing category list...")
         categories = parse_category_list(category_list_path)
         print(f"Found {len(categories)} categories.")
