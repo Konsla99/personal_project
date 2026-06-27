@@ -46,6 +46,7 @@ HTML 코드를 직접 고칠 필요 없이 아래의 **카테고리 리스트** 
   - SEMI standard
   - 이론
 - **PLAYGROUND** (이미지: thumb-playground)
+  - 블로그 관리하기
 
 ---
 **반영 요청 안내:**
