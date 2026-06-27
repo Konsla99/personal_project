@@ -494,9 +494,8 @@ template {
   justify-content: flex-start !important;
 }
 
-/* 내부 텍스트 크기 동적 조절 (clamp 강화) */
-#wrap.layout-tech .category-body strong,
-#wrap.layout-tech .article-type-common .title {
+/* 내부 텍스트 크기 동적 조절 (clamp 강화 - 카테고리 카드 2줄 유지) */
+#wrap.layout-tech .category-body strong {
   font-size: clamp(0.7rem, 3.2vw, 1.3rem) !important;
   line-height: 1.2 !important;
   margin: 0 0 5% 0 !important;
@@ -508,11 +507,25 @@ template {
   overflow: hidden !important;
 }
 
-#wrap.layout-tech .article-type-common .title {
-  text-align: left !important;
+/* 테크 레이아웃 일반 글 카드 타이틀 (제한 없이 전체 노출) */
+#wrap.layout-tech .article-type-common .link-article {
+  display: block !important;
 }
 
-#wrap.layout-tech .article-type-common .box-info {
+#wrap.layout-tech .article-type-common .title {
+  font-size: clamp(0.7rem, 3.2vw, 1.3rem) !important;
+  line-height: 1.2 !important;
+  margin: 0 0 5% 0 !important;
+  text-align: left !important;
+  word-break: break-all !important;
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+  -webkit-line-clamp: unset !important;
+  white-space: normal !important;
+}
+
+#wrap.layout-tech .article-type-common .box-meta {
   margin-top: auto !important;
   font-size: clamp(0.6rem, 1.8vw, 0.9rem) !important;
   opacity: 0.7 !important;
@@ -2937,16 +2950,11 @@ html {
 
 .article-type-common .title {
   display: block;
-  max-height: 54px;
   margin-bottom: 13px;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.15;
-  overflow: hidden;
   color: var(--text-main);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   white-space: normal;
 }
 
@@ -3043,11 +3051,12 @@ html {
 /* ----- media query - mobile ----- */
 @media screen and (max-width: 1060px) {
   .article-type-common .title {
-    max-height: 24px;
     margin-bottom: 7px;
     font-size: 21px;
     font-weight: 400;
-    -webkit-line-clamp: 1;
+    max-height: none;
+    -webkit-line-clamp: unset;
+    display: block;
   }
 
   .article-type-common .summary {
@@ -3071,9 +3080,9 @@ html {
 }
 
 .article-type-crop .title {
-  height: 28.5px;
+  height: auto;
   margin-top: -4px;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: unset;
 }
 
 .article-type- .title>img,
@@ -3135,8 +3144,8 @@ html {
 }
 
 .article-type-resize .title {
-  height: 28px;
-  -webkit-line-clamp: 1;
+  height: auto;
+  -webkit-line-clamp: unset;
 }
 
 
