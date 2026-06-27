@@ -2,17 +2,17 @@
 
 이미지 및 타이틀 비율이 조절되는 형태의 리사이즈 글 카드(`.article-type-resize`) 관련 스타일 설정 파일입니다. 아래 테이블의 **현재 설정값** 부분을 수정해 주세요.
 
-| 스타일 항목 | 현재 설정값 | 설명 | 대상 CSS 선택자 |
-| :--- | :--- | :--- | :--- |
-| 하단 여백 (Margin) | `20px` | 글 카드 아래쪽 바깥 여백 | `.article-type-resize` |
-| 썸네일 여백 (Margin) | `20px` | 썸네일 이미지 영역 하단 바깥 여백 | `.article-type-resize .thumbnail` |
-| 썸네일 배경색 | `none` | 썸네일 이미지 박스 기본 배경색 | `.article-type-resize .thumbnail` |
-| 썸네일 이미지 너비 | `100%` | 이미지 가로 크기 비율 | `.article-type-resize .thumbnail .img-thumbnail` |
-| 썸네일 이미지 높이 | `auto` | 이미지 세로 크기 (기본 비율 자동 맞춤) | `.article-type-resize .thumbnail .img-thumbnail` |
-| 제목 줄 수 제한 | `1` | 제목이 길 경우 말줄임표 처리할 최대 라인 수 | `.article-type-resize .title` |
-| 요약 텍스트 글자 크기 | `14px` | 본문 요약의 글자 크기 | `.article-type-resize .summary` |
-| 요약 텍스트 줄 제한 | `3` | 요약 본문이 길 경우 말줄임표 처리할 최대 라인 수 | `.article-type-resize .summary` |
-| 요약 텍스트 색상 | `var(--text-muted)` | 요약 본문의 글자 색상 | `.article-type-resize .summary` |
+| 스타일 항목 | 현재 설정값 | 설명 | 대상 CSS 선택자 | 실제 CSS 속성 |
+| :--- | :--- | :--- | :--- | :--- |
+| 하단 여백 (Margin) | `20px` | 글 카드 아래쪽 바깥 여백 | `.article-type-resize` | `margin-bottom` |
+| 썸네일 여백 (Margin) | `20px` | 썸네일 이미지 영역 하단 바깥 여백 | `.article-type-resize .thumbnail` | `margin-bottom` |
+| 썸네일 배경색 | `none` | 썸네일 이미지 박스 기본 배경색 | `.article-type-resize .thumbnail` | `background` |
+| 썸네일 이미지 너비 | `100%` | 이미지 가로 크기 비율 | `.article-type-resize .thumbnail .img-thumbnail` | `width` |
+| 썸네일 이미지 높이 | `auto` | 이미지 세로 크기 (기본 비율 자동 맞춤) | `.article-type-resize .thumbnail .img-thumbnail` | `height` |
+| 제목 줄 수 제한 | `1` | 제목이 길 경우 말줄임표 처리할 최대 라인 수 | `.article-type-resize .title` | `-webkit-line-clamp` |
+| 요약 텍스트 글자 크기 | `14px` | 본문 요약의 글자 크기 | `.article-type-resize .summary` | `font-size` |
+| 요약 텍스트 줄 제한 | `3` | 요약 본문이 길 경우 말줄임표 처리할 최대 라인 수 | `.article-type-resize .summary` | `-webkit-line-clamp` |
+| 요약 텍스트 색상 | `var(--text-muted)` | 요약 본문의 글자 색상 | `.article-type-resize .summary` | `color` |
 
 ---
 **주의사항:** 
