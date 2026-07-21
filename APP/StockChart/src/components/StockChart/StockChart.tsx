@@ -81,8 +81,8 @@ export const StockChart: React.FC<StockChartProps> = ({
 
       if (startBar && endBar) {
         // 시간 좌표(X) 변환
-        const startX = timeScale.timeToCoordinate(startBar.time);
-        const endX = timeScale.timeToCoordinate(endBar.time);
+        const startX = timeScale.timeToCoordinate(startBar.time as any);
+        const endX = timeScale.timeToCoordinate(endBar.time as any);
 
         if (startX !== null && endX !== null) {
           // 인덱스 간격
@@ -173,8 +173,8 @@ export const StockChart: React.FC<StockChartProps> = ({
       const endBar = data[data.length - 1];
 
       if (startBar && endBar) {
-        const startX = timeScale.timeToCoordinate(startBar.time);
-        const endX = timeScale.timeToCoordinate(endBar.time);
+        const startX = timeScale.timeToCoordinate(startBar.time as any);
+        const endX = timeScale.timeToCoordinate(endBar.time as any);
 
         if (startX !== null && endX !== null) {
           // 각 피보나치 레벨별 수평선 그리기
@@ -288,7 +288,7 @@ export const StockChart: React.FC<StockChartProps> = ({
   useEffect(() => {
     const series = seriesRef.current;
     if (series && data.length > 0) {
-      series.setData(data);
+      series.setData(data as any);
       
       // 차트의 줌/스케일을 최근 데이터에 맞춤
       setTimeout(() => {
