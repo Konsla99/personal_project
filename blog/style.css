@@ -232,6 +232,12 @@ template {
   --text-main: #f0f6fc;
   --text-muted: #9aa6b2;
   --point-color: #539bf5;
+  --table-header: #496f9f;
+  --table-body: #333e4c;
+  --table-body-alt: #3c4857;
+  --table-border: #59697c;
+  --table-border-strong: #71869f;
+  --table-outline: #687b91;
   --aside-width: 18%;
   --aside-min: 250px;
   --aside-max: 350px;
@@ -6995,34 +7001,47 @@ hr[data-ke-style='style8'],
 
 /* 4. 테이블(Table) 가시성 개선 */
 #article-view table {
-  border: 1px solid var(--border-color) !important;
-  background-color: transparent !important;
+  border: 2px solid var(--table-outline) !important;
+  background-color: #252c34 !important;
   width: 100% !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.24) !important;
 }
 
 #article-view table th,
 #article-view table td {
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid var(--table-border) !important;
   color: var(--text-main) !important;
-  padding: 12px 15px !important;
+  padding: 14px 16px !important;
 }
 
 /* 본문 셀은 카드 배경으로 고정해 헤더 배경과 섞이지 않게 함 */
 #article-view table tbody td {
-  background-color: var(--bg-card) !important;
+  background-color: var(--table-body) !important;
 }
 
-/* 테이블 헤더 강조: 실제 thead와 Tistory의 tbody 첫 행 형식을 모두 지원 */
-#article-view table thead tr,
-#article-view table tbody tr:first-child {
-  background-color: rgba(83, 155, 245, 0.15) !important; /* 포인트 컬러 기반 배경 */
+#article-view table tbody tr:nth-child(even) td {
+  background-color: var(--table-body-alt) !important;
 }
 
-#article-view table thead tr th,
-#article-view table tbody tr:first-child td {
-  background-color: rgba(83, 155, 245, 0.15) !important;
+/* 테이블 헤더 강조: 실제 thead만 헤더로 처리 */
+#article-view table thead tr {
+  background-color: var(--table-header) !important;
+}
+
+#article-view table thead tr th {
+  background-color: var(--table-header) !important;
+  border-bottom: 2px solid #8da9ca !important;
   color: #ffffff !important; /* 흰색 글자 고정 */
   font-weight: 700 !important;
+}
+
+#article-view table tbody tr:first-child td {
+  border-top: 2px solid var(--table-border-strong) !important;
+}
+
+#article-view table tbody td:first-child {
+  color: #ffffff !important;
+  font-weight: 600 !important;
 }
 
 /* 인용문 스타일 보강 */
